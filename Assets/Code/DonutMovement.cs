@@ -7,11 +7,10 @@ public class DonutMovement : MonoBehaviour
 
     public float Speed, EndX;
     //is left or right
-    public int DirectionMultiplier;
+    public int DirectionMultiplier, DonutScore;
     public Sprite[] DonutSprites;
 
     private bool hasBeenSetup = false;
-    private int score;
     private Vector3 endLocation;
 
     //Set the information about donut after spawning
@@ -22,7 +21,7 @@ public class DonutMovement : MonoBehaviour
         //set the sprite
         this.GetComponent<SpriteRenderer>().sprite = DonutSprites[donutSprite];
         //set the score per donut
-        this.score = score;
+        DonutScore = score;
         //setup has been complete
         hasBeenSetup = true;
     }

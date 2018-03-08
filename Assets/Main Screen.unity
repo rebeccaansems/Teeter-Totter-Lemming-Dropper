@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 25753602}
+  - component: {fileID: 25753603}
   m_Layer: 0
   m_Name: Lemmings
   m_TagString: Untagged
@@ -143,6 +144,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &25753603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 25753601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee4715493eff51459348dd4045669d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreText: {fileID: 922585688}
 --- !u!1 &27317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,8 +622,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08988858, y: 0.0026863113}
-  m_Size: {x: 1.2759362, y: 0.53698146}
+  m_Offset: {x: -0.06891907, y: 0.0036913243}
+  m_Size: {x: 0.99789965, y: 0.4505874}
   m_Direction: 1
 --- !u!114 &542839511
 MonoBehaviour:
@@ -623,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db72f42b0361e349bea642b3c92c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 25753603}
 --- !u!50 &542839512
 Rigidbody2D:
   serializedVersion: 4
@@ -1277,8 +1291,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08988858, y: 0.0026863113}
-  m_Size: {x: 1.2759362, y: 0.53698146}
+  m_Offset: {x: 0.058740743, y: 0.0036913091}
+  m_Size: {x: 1.0327895, y: 0.45057774}
   m_Direction: 1
 --- !u!114 &1379860283
 MonoBehaviour:
@@ -1291,6 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db72f42b0361e349bea642b3c92c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 25753603}
 --- !u!50 &1379860284
 Rigidbody2D:
   serializedVersion: 4
@@ -1534,6 +1549,8 @@ MonoBehaviour:
   DonutPrefab: {fileID: 1657383984262432, guid: 07875edff09e5a94c914df04c244a912,
     type: 2}
   StartX: 3.5
+  LowestY: -2
+  HighestY: 1.8
 --- !u!1 &1873910769
 GameObject:
   m_ObjectHideFlags: 0

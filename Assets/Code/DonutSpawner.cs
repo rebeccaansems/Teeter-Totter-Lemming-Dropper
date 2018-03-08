@@ -6,7 +6,7 @@ public class DonutSpawner : MonoBehaviour
 {
 
     public GameObject DonutPrefab;
-    public float StartX;
+    public float StartX, LowestY, HighestY;
 
     private void Start()
     {
@@ -35,10 +35,10 @@ public class DonutSpawner : MonoBehaviour
                 donut.GetComponent<DonutMovement>().DirectionMultiplier = -1;
             }
 
-            //start at a y between -2.5 and 2 on the 0.1 point
-            float startY = Random.Range(-2.5f, 2f) * 10;
+            //start at a y between LowestY and HighestY on a 0.2
+            float startY = Random.Range(LowestY, HighestY) * 5;
             startY = Mathf.Round(startY);
-            startY = startY / 10;
+            startY = startY / 5;
             donut.transform.position = new Vector3(startX, startY, 0);
 
             //get donut type
