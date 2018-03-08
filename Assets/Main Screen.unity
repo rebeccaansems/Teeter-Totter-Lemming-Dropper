@@ -319,7 +319,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 505994799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431994978}
@@ -352,7 +352,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542839505}
   m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: -1.3, y: -3.1, z: -2}
+  m_LocalPosition: {x: -1.3, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 25753602}
@@ -430,8 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef62e9508a3cba408f14ef5ee665830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LowerLocation: {x: -1.3, y: -3.1, z: -2}
-  UpperLocation: {x: -1.3, y: 3.5, z: -2}
+  LowerLocation: {x: -1.3, y: -3.1, z: 0}
+  UpperLocation: {x: -1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 1379860281}
   TeeterTotter: {fileID: 431994977}
   FallSpeed: 5
@@ -753,7 +753,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1298778089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -3, z: -4}
+  m_LocalPosition: {x: 0.5, y: -3, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1509707799}
@@ -889,7 +889,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379860277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 3.5, z: -2}
+  m_LocalPosition: {x: 1.3, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 25753602}
@@ -906,8 +906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef62e9508a3cba408f14ef5ee665830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LowerLocation: {x: 1.3, y: -3.1, z: -2}
-  UpperLocation: {x: 1.3, y: 3.5, z: -2}
+  LowerLocation: {x: 1.3, y: -3.1, z: 0}
+  UpperLocation: {x: 1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 542839509}
   TeeterTotter: {fileID: 431994977}
   FallSpeed: 5
@@ -1093,6 +1093,34 @@ Transform:
   - {fileID: 2004385901}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1543742290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1543742291}
+  m_Layer: 0
+  m_Name: Donut Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543742291
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1543742290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873910769
 GameObject:
