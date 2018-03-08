@@ -5,7 +5,7 @@ using UnityEngine;
 public class DonutSpawner : MonoBehaviour
 {
 
-    public GameObject DonutPrefab;
+    public GameObject DonutPrefab, CollectablePrefab;
     public float StartX, LowestY, HighestY;
 
     private void Start()
@@ -19,32 +19,67 @@ public class DonutSpawner : MonoBehaviour
         {
             //every 0.1 - 5 seconds spawn a new donut
             yield return new WaitForSeconds(Random.Range(0.1f, 5f));
+            GameObject spawn;
 
-            //spawn new donut and set parent to this object
-            GameObject donut = Instantiate(DonutPrefab);
-            donut.transform.parent = this.transform;
-
-            //determine if starting location is left or right
-            float startX = StartX;
-            if (Random.Range(0, 2) == 0) //started left
+            //1 in 30 chance of being a collectable instead of a donut
+            if (Random.Range(0, 31) != 0)
             {
-                startX = startX * -1;
+                //spawn new donut
+                spawn = Instantiate(DonutPrefab);
+
+                //set parent to this object
+                spawn.transform.parent = this.transform;
+
+                //determine if starting location is left or right
+                float startX = StartX;
+                if (Random.Range(0, 2) == 0) //started left
+                {
+                    startX = startX * -1;
+                }
+                else //started right
+                {
+                    spawn.GetComponent<DonutMovement>().DirectionMultiplier = -1;
+                }
+
+                //start at a y between LowestY and HighestY on a 0.2
+                float startY = Random.Range(LowestY, HighestY) * 5;
+                startY = Mathf.Round(startY);
+                startY = startY / 5;
+                spawn.transform.position = new Vector3(startX, startY, 0);
+
+                //get donut type
+                int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
+                //sets donut type
+                spawn.GetComponent<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
             }
-            else //started right
+            else //is a collectable
             {
-                donut.GetComponent<DonutMovement>().DirectionMultiplier = -1;
+                //spawn new collectable
+                spawn = Instantiate(CollectablePrefab);
+
+                //set parent to this object
+                spawn.transform.parent = this.transform;
+
+                //determine if starting location is left or right
+                float startX = StartX;
+                if (Random.Range(0, 2) == 0) //started left
+                {
+                    startX = startX * -1;
+                }
+                else //started right
+                {
+                    spawn.GetComponent<CollectableMovement>().DirectionMultiplier = -1;
+                }
+
+                //start at a y between LowestY and HighestY on a 0.2
+                float startY = Random.Range(LowestY, HighestY) * 5;
+                startY = Mathf.Round(startY);
+                startY = startY / 5;
+                spawn.transform.position = new Vector3(startX, startY, 0);
+
+                //sets collectable type
+                spawn.GetComponent<CollectableMovement>().Setup(Random.Range(0,4));
             }
-
-            //start at a y between LowestY and HighestY on a 0.2
-            float startY = Random.Range(LowestY, HighestY) * 5;
-            startY = Mathf.Round(startY);
-            startY = startY / 5;
-            donut.transform.position = new Vector3(startX, startY, 0);
-
-            //get donut type
-            int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
-            //sets donut type
-            donut.GetComponent<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
         }
     }
 

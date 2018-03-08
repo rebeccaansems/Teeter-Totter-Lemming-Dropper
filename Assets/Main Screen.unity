@@ -236,7 +236,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 922585688}
   TimerText: {fileID: 314553704}
-  TimerLength: 60
+  Collectables:
+  - {fileID: 1920607825}
+  - {fileID: 1809780183}
+  - {fileID: 273101302}
+  - {fileID: 930177482}
+  GatheredCollectables:
+  - {fileID: 21300000, guid: aa93ffe748a70aa41bbf619e4ce9fe89, type: 3}
+  - {fileID: 21300000, guid: 8054014ef00b26e498beabbbd5c56c51, type: 3}
+  - {fileID: 21300000, guid: c3a9e550593ab58429d60a19b398660b, type: 3}
+  - {fileID: 21300000, guid: 225ca4015251328408de785780c73bf0, type: 3}
+  TimerLength: 100
 --- !u!4 &114629205
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1260,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1821,7 +1831,7 @@ GameObject:
   - component: {fileID: 1543742291}
   - component: {fileID: 1543742292}
   m_Layer: 0
-  m_Name: Donut Spawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,6 +1862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DonutPrefab: {fileID: 1657383984262432, guid: 07875edff09e5a94c914df04c244a912,
+    type: 2}
+  CollectablePrefab: {fileID: 1145386409270530, guid: 5d202b6a558232f489d4007410376452,
     type: 2}
   StartX: 3.5
   LowestY: -2
