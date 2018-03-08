@@ -434,9 +434,9 @@ MonoBehaviour:
   UpperLocation: {x: -1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 1379860281}
   TeeterTotter: {fileID: 431994977}
-  FallSpeed: 5
+  FallSpeed: 7
   RotationAmount: 15
-  TeeterRotationAmount: 3.35
+  TeeterRotationAmount: 4.2
   StartTeeterYPos: -2.2
 --- !u!1 &652247877
 GameObject:
@@ -910,9 +910,9 @@ MonoBehaviour:
   UpperLocation: {x: 1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 542839509}
   TeeterTotter: {fileID: 431994977}
-  FallSpeed: 5
+  FallSpeed: 7
   RotationAmount: -15
-  TeeterRotationAmount: -3.35
+  TeeterRotationAmount: -4.2
   StartTeeterYPos: -2.2
 --- !u!1 &1415407527
 GameObject:
