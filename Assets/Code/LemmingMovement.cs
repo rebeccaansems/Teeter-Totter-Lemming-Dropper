@@ -7,6 +7,8 @@ public class LemmingMovement : MonoBehaviour
     public Vector3 LowerLocation, UpperLocation;
     public LemmingMovement OtherLemming;
     public GameObject TeeterTotter;
+    public Animator FlowerAnimator;
+
     public float FallSpeed, RotationAmount, TeeterRotationAmount;
     public float StartTeeterYPos;
 
@@ -20,7 +22,7 @@ public class LemmingMovement : MonoBehaviour
     void Update()
     {
         //if player clicks or presses screen and lemming is currently at top and lemming is doing idle animation
-        if (Input.GetMouseButtonDown(0) && transform.position.y == UpperLocation.y && 
+        if (Input.GetMouseButtonDown(0) && transform.position.y == UpperLocation.y &&
             anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
         {
             //Lemming starts falling
@@ -66,6 +68,9 @@ public class LemmingMovement : MonoBehaviour
 
     public IEnumerator RespondFall()
     {
+        //set flower animation to idle
+        FlowerAnimator.SetBool("isLanding", false);
+
         //start lemming jumping animation
         anim.SetBool("isJumping", true);
 
@@ -83,5 +88,8 @@ public class LemmingMovement : MonoBehaviour
 
         //set rotation of lemming so it appears to be on the flower
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+        //set flower animation to lemming is landing
+        FlowerAnimator.SetBool("isLanding", true);
     }
 }

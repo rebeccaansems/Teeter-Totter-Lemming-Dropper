@@ -113,49 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &25753601
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 25753602}
-  - component: {fileID: 25753603}
-  m_Layer: 0
-  m_Name: Lemmings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &25753602
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 25753601}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1379860280}
-  - {fileID: 542839506}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &25753603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 25753601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee4715493eff51459348dd4045669d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScoreText: {fileID: 922585688}
 --- !u!1 &27317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +207,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &114629203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 114629205}
+  - component: {fileID: 114629204}
+  m_Layer: 0
+  m_Name: Player Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114629204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114629203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee4715493eff51459348dd4045669d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreText: {fileID: 922585688}
+--- !u!4 &114629205
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114629203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &132019625
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542839505
 GameObject:
@@ -506,10 +504,10 @@ GameObject:
   - component: {fileID: 542839506}
   - component: {fileID: 542839508}
   - component: {fileID: 542839507}
-  - component: {fileID: 542839509}
-  - component: {fileID: 542839510}
-  - component: {fileID: 542839511}
   - component: {fileID: 542839512}
+  - component: {fileID: 542839510}
+  - component: {fileID: 542839509}
+  - component: {fileID: 542839511}
   m_Layer: 0
   m_Name: Norwegian Lemming
   m_TagString: Untagged
@@ -523,11 +521,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542839505}
-  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: -1.3, y: -3.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0.05000007, y: -5.6, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 25753602}
+  m_Father: {fileID: 2004385901}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!95 &542839507
@@ -606,6 +604,7 @@ MonoBehaviour:
   UpperLocation: {x: -1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 1379860281}
   TeeterTotter: {fileID: 431994977}
+  FlowerAnimator: {fileID: 2004385902}
   FallSpeed: 7
   RotationAmount: 15
   TeeterRotationAmount: 4.2
@@ -636,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db72f42b0361e349bea642b3c92c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 25753603}
+  Player: {fileID: 114629204}
 --- !u!50 &542839512
 Rigidbody2D:
   serializedVersion: 4
@@ -809,7 +808,7 @@ GameObject:
   - component: {fileID: 761296945}
   - component: {fileID: 761296946}
   m_Layer: 0
-  m_Name: stem
+  m_Name: Flower Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,7 +1028,7 @@ GameObject:
   - component: {fileID: 1036035586}
   - component: {fileID: 1036035587}
   m_Layer: 0
-  m_Name: stem
+  m_Name: Flower Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,10 +1174,10 @@ GameObject:
   - component: {fileID: 1379860280}
   - component: {fileID: 1379860279}
   - component: {fileID: 1379860278}
-  - component: {fileID: 1379860281}
-  - component: {fileID: 1379860282}
-  - component: {fileID: 1379860283}
   - component: {fileID: 1379860284}
+  - component: {fileID: 1379860282}
+  - component: {fileID: 1379860281}
+  - component: {fileID: 1379860283}
   m_Layer: 0
   m_Name: Grey Lemming
   m_TagString: Untagged
@@ -1254,11 +1253,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379860277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 3.5, z: 0}
+  m_LocalPosition: {x: -0.05000007, y: 1, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 25753602}
-  m_RootOrder: 0
+  m_Father: {fileID: 1415407529}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1379860281
 MonoBehaviour:
@@ -1275,6 +1274,7 @@ MonoBehaviour:
   UpperLocation: {x: 1.3, y: 3.5, z: 0}
   OtherLemming: {fileID: 542839509}
   TeeterTotter: {fileID: 431994977}
+  FlowerAnimator: {fileID: 1415407530}
   FallSpeed: 7
   RotationAmount: -15
   TeeterRotationAmount: -4.2
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db72f42b0361e349bea642b3c92c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 25753603}
+  Player: {fileID: 114629204}
 --- !u!50 &1379860284
 Rigidbody2D:
   serializedVersion: 4
@@ -1335,6 +1335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415407529}
   - component: {fileID: 1415407528}
+  - component: {fileID: 1415407530}
   m_Layer: 0
   m_Name: Blue Flower
   m_TagString: Untagged
@@ -1397,9 +1398,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 761296945}
+  - {fileID: 1379860280}
   m_Father: {fileID: 1536787209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1415407530
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415407527}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bf399c90fc347e4181572849a27d826, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1509707797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1552,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1543742292
 MonoBehaviour:
@@ -1633,6 +1652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004385901}
   - component: {fileID: 2004385900}
+  - component: {fileID: 2004385902}
   m_Layer: 0
   m_Name: Magenta Flower
   m_TagString: Untagged
@@ -1695,6 +1715,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1036035586}
+  - {fileID: 542839506}
   m_Father: {fileID: 1536787209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2004385902
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2004385899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 837fa85480b58fb4eac2547ae7d63f82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
