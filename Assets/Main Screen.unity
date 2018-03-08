@@ -1136,8 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DonutPrefab: {fileID: 1657383984262432, guid: 07875edff09e5a94c914df04c244a912,
     type: 2}
-  StartXRight: 3.5
-  StartXLeft: -3.5
+  StartX: 3.5
 --- !u!1 &1873910769
 GameObject:
   m_ObjectHideFlags: 0

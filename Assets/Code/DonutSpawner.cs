@@ -6,7 +6,7 @@ public class DonutSpawner : MonoBehaviour
 {
 
     public GameObject DonutPrefab;
-    public float StartXRight, StartXLeft;
+    public float StartX;
 
     private void Start()
     {
@@ -22,10 +22,20 @@ public class DonutSpawner : MonoBehaviour
             GameObject donut = Instantiate(DonutPrefab);
             donut.transform.parent = this.transform;
 
+            float startX = StartX;
+            if (Random.Range(0, 2) == 0)
+            {
+                startX = startX * -1;
+            }
+            else
+            {
+                donut.GetComponent<DonutMovement>().DirectionMultiplier = -1;
+            }
+
             float startY = Random.Range(-2.5f, 2) * 10;
             startY = Mathf.Round(startY);
             startY = startY / 10;
-            donut.transform.position = new Vector3(StartXRight, startY, 0);
+            donut.transform.position = new Vector3(startX, startY, 0);
 
             int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
             donut.GetComponent<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);

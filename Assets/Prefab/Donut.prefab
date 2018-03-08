@@ -53,9 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  Score: 2
-  EndXRight: 3.5
-  EndXLeft: -3.5
+  EndX: 3.5
+  DirectionMultiplier: 1
   DonutSprites:
   - {fileID: 21300000, guid: 4a42488308f44c340b0db7787442be96, type: 3}
   - {fileID: 21300000, guid: f286fa3549b2fa042a4b35bfd5824bbf, type: 3}
