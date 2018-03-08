@@ -17,31 +17,38 @@ public class DonutSpawner : MonoBehaviour
     {
         while (true)
         {
+            //every 0.1 - 5 seconds spawn a new donut
             yield return new WaitForSeconds(Random.Range(0.1f, 5f));
 
+            //spawn new donut and set parent to this object
             GameObject donut = Instantiate(DonutPrefab);
             donut.transform.parent = this.transform;
 
+            //determine if starting location is left or right
             float startX = StartX;
-            if (Random.Range(0, 2) == 0)
+            if (Random.Range(0, 2) == 0) //started left
             {
                 startX = startX * -1;
             }
-            else
+            else //started right
             {
                 donut.GetComponent<DonutMovement>().DirectionMultiplier = -1;
             }
 
-            float startY = Random.Range(-2.5f, 2) * 10;
+            //start at a y between -2.5 and 2 on the 0.1 point
+            float startY = Random.Range(-2.5f, 2f) * 10;
             startY = Mathf.Round(startY);
             startY = startY / 10;
             donut.transform.position = new Vector3(startX, startY, 0);
 
+            //get donut type
             int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
+            //sets donut type
             donut.GetComponent<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
         }
     }
 
+    //get donut type (sprite and score) accoring to num
     int[] GetDonutInfo(int num)
     {
         if (num > 50100)
