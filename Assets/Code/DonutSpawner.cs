@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DonutSpawner : MonoBehaviour
@@ -8,18 +7,20 @@ public class DonutSpawner : MonoBehaviour
     public GameObject DonutPrefab, CollectablePrefab;
     public float StartX, LowestY, HighestY;
 
+    private GameObject predictor, spawn;
+
     private void Start()
     {
         StartCoroutine(Spawn());
     }
 
+    //Spawn donuts and collectables
     IEnumerator Spawn()
     {
         while (true)
         {
             //every 0.1 - 5 seconds spawn a new donut
             yield return new WaitForSeconds(Random.Range(0.1f, 5f));
-            GameObject spawn;
 
             //1 in 30 chance of being a collectable instead of a donut
             if (Random.Range(0, 31) != 0)
@@ -29,14 +30,13 @@ public class DonutSpawner : MonoBehaviour
 
                 //set parent to this object
                 spawn.transform.parent = this.transform;
-
-                GameObject predictor;
-
+                
                 //determine if starting location is left or right
                 float startX = StartX;
                 if (Random.Range(0, 2) == 0) //started left
                 {
                     startX = startX * -1;
+                    //get left predictor and destroy right
                     predictor = spawn.transform.Find("Donut Predictor Left").gameObject;
                     Destroy(spawn.transform.Find("Donut Predictor Right").gameObject);
 
@@ -44,6 +44,7 @@ public class DonutSpawner : MonoBehaviour
                 else //started right
                 {
                     spawn.GetComponentInChildren<DonutMovement>().DirectionMultiplier = -1;
+                    //get right predictor object and destroy left
                     predictor = spawn.transform.Find("Donut Predictor Right").gameObject;
                     Destroy(spawn.transform.Find("Donut Predictor Left").gameObject);
                 }
@@ -56,7 +57,7 @@ public class DonutSpawner : MonoBehaviour
 
                 //get donut type
                 int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
-                //sets donut type
+                //sets donut type in donut and predictor
                 spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
                 predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
             }
@@ -75,12 +76,14 @@ public class DonutSpawner : MonoBehaviour
                 if (Random.Range(0, 2) == 0) //started left
                 {
                     startX = startX * -1;
+                    //get left predictor object and destroy right
                     predictor = spawn.transform.Find("Collectable Predictor Left").gameObject;
                     Destroy(spawn.transform.Find("Collectable Predictor Right").gameObject);
                 }
                 else //started right
                 {
                     spawn.GetComponentInChildren<CollectableMovement>().DirectionMultiplier = -1;
+                    //get right predictor object and destroy left
                     predictor = spawn.transform.Find("Collectable Predictor Right").gameObject;
                     Destroy(spawn.transform.Find("Collectable Predictor Left").gameObject);
                 }
@@ -91,7 +94,7 @@ public class DonutSpawner : MonoBehaviour
                 startY = startY / 5;
                 spawn.transform.position = new Vector3(startX, startY, 0);
 
-                //sets collectable type
+                //sets collectable type in object and predictor
                 int collectType = Random.Range(0, 4);
                 spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
                 predictor.GetComponent<Predictor>().Setup(collectType);

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Predictor : MonoBehaviour
 {
@@ -16,8 +14,10 @@ public class Predictor : MonoBehaviour
 
     private void Update()
     {
+        //if real object is within 1 point
         if (Mathf.Abs(MainObject.transform.position.x - this.transform.position.x) < 1)
         {
+            //destroy this object
             Destroy(this.gameObject);
         }
     }
