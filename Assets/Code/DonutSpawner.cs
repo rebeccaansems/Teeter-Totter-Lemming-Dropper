@@ -57,9 +57,12 @@ public class DonutSpawner : MonoBehaviour
 
                 //get donut type
                 int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
-                //sets donut type in donut and predictor
-                spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
-                predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
+
+                //sets donut type in donut
+                //INSERT CODE
+
+                //sets donut type in predictor
+                //INSERT CODE
             }
             else //is a collectable
             {
@@ -97,7 +100,7 @@ public class DonutSpawner : MonoBehaviour
                 //sets collectable type in object and predictor
                 int collectType = Random.Range(0, 4);
                 spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
-                predictor.GetComponent<Predictor>().Setup(collectType);
+                predictor.GetComponent<Predictor>().SetSprite(collectType);
             }
         }
     }

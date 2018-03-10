@@ -33,10 +33,7 @@ public class DonutMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, endLocation, step);
 
             //if close enough to end zone = delete
-            if (Mathf.Abs(this.transform.position.x - endLocation.x) < 0.1f)
-            {
-                Destroy(transform.parent.gameObject);
-            }
+            //INSERT CODE
         }
     }
 }

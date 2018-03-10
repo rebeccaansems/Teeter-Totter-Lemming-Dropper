@@ -5,10 +5,9 @@ public class Predictor : MonoBehaviour
     public GameObject MainObject;
     public Sprite[] Sprites;
 
-    //Set the information about donut after spawning
-    public void Setup(int donutSprite)
+    //set the sprite for predictor
+    public void SetSprite(int donutSprite)
     {
-        //set the sprite
         this.GetComponent<SpriteRenderer>().sprite = Sprites[donutSprite];
     }
 
