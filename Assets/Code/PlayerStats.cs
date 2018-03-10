@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    public EndGameUI EndGame;
     public Text ScoreText, TimerText;
     public Image[] Collectables;
     public Sprite[] GatheredCollectables;
     public float TimerLength;
 
-    private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten;
+    private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
     private bool fullCollectAwarded = false;
 
     //Increase score and num donuts eaten
@@ -78,9 +78,10 @@ public class PlayerStats : MonoBehaviour
         return false;
     }
 
-    //increase time remaining in game
+    //increase time remaining in game and total time bonuses added
     public void AddTime(int timeAdd)
     {
+        totalTimeBonus += timeAdd;
         TimerLength += timeAdd;
     }
 
@@ -101,7 +102,12 @@ public class PlayerStats : MonoBehaviour
     //What to do once the timer is up
     private void TimerUp()
     {
-        //Reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        EndGame.MakeEndGameVisible();
+    }
+
+    //get array of players information
+    public int[] GetPlayerInformation()
+    {
+        return new int[] { playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus };
     }
 }
