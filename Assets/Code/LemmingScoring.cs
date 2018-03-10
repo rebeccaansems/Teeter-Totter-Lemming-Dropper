@@ -11,7 +11,7 @@ public class LemmingScoring : MonoBehaviour
         if (collision.transform.tag == "Score")
         {
             Player.AddDonutEaten(collision.GetComponent<DonutMovement>().DonutScore, this.transform.position.x < 0);
-            Destroy(collision.gameObject);
+            Destroy(collision.transform.parent.gameObject);
         }
         else if (collision.transform.tag == "Collect")
         {

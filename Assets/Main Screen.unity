@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8054014ef00b26e498beabbbd5c56c51, type: 3}
   - {fileID: 21300000, guid: c3a9e550593ab58429d60a19b398660b, type: 3}
   - {fileID: 21300000, guid: 225ca4015251328408de785780c73bf0, type: 3}
-  TimerLength: 100
+  TimerLength: 60
 --- !u!4 &114629205
 Transform:
   m_ObjectHideFlags: 0
@@ -1865,7 +1865,11 @@ MonoBehaviour:
     type: 2}
   CollectablePrefab: {fileID: 1145386409270530, guid: 5d202b6a558232f489d4007410376452,
     type: 2}
-  StartX: 3.5
+  DonutLeftPredictor: {fileID: 1333112874759668, guid: 07875edff09e5a94c914df04c244a912,
+    type: 2}
+  DonutRightPredictor: {fileID: 1328976187962670, guid: 07875edff09e5a94c914df04c244a912,
+    type: 2}
+  StartX: 6
   LowestY: -2
   HighestY: 1.8
 --- !u!1 &1809780180

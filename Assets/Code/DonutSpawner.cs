@@ -30,15 +30,22 @@ public class DonutSpawner : MonoBehaviour
                 //set parent to this object
                 spawn.transform.parent = this.transform;
 
+                GameObject predictor;
+
                 //determine if starting location is left or right
                 float startX = StartX;
                 if (Random.Range(0, 2) == 0) //started left
                 {
                     startX = startX * -1;
+                    predictor = spawn.transform.Find("Donut Predictor Left").gameObject;
+                    Destroy(spawn.transform.Find("Donut Predictor Right").gameObject);
+
                 }
                 else //started right
                 {
-                    spawn.GetComponent<DonutMovement>().DirectionMultiplier = -1;
+                    spawn.GetComponentInChildren<DonutMovement>().DirectionMultiplier = -1;
+                    predictor = spawn.transform.Find("Donut Predictor Right").gameObject;
+                    Destroy(spawn.transform.Find("Donut Predictor Left").gameObject);
                 }
 
                 //start at a y between LowestY and HighestY on a 0.2
@@ -50,7 +57,8 @@ public class DonutSpawner : MonoBehaviour
                 //get donut type
                 int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
                 //sets donut type
-                spawn.GetComponent<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
+                spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
+                predictor.GetComponent<DonutPredictor>().Setup(donutInfo[0]);
             }
             else //is a collectable
             {
