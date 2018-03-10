@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DonutMovement : MonoBehaviour
 {
-
     public float Speed, EndX;
     //is left or right
     public int DirectionMultiplier, DonutScore;

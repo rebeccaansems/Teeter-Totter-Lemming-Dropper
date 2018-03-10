@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d903c14f5d3ca5847971d33024f64fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Donut: {fileID: 1517645435540500}
-  DonutSprites:
+  MainObject: {fileID: 1517645435540500}
+  Sprites:
   - {fileID: 21300000, guid: 4a42488308f44c340b0db7787442be96, type: 3}
   - {fileID: 21300000, guid: f286fa3549b2fa042a4b35bfd5824bbf, type: 3}
   - {fileID: 21300000, guid: 490813472257cc8458db5b73a911f05b, type: 3}
@@ -233,7 +233,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b275a10f99d4cb45b0392ef9db9f57b, type: 3}
   - {fileID: 21300000, guid: 6895f4adc6fd65e478c3a9d2255a3474, type: 3}
   - {fileID: 21300000, guid: 586916e3351d0da48bfb7d4ab5f467e7, type: 3}
-  DirectionMultiplier: 0
 --- !u!114 &114284375969947130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d903c14f5d3ca5847971d33024f64fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Donut: {fileID: 1517645435540500}
-  DonutSprites:
+  MainObject: {fileID: 1517645435540500}
+  Sprites:
   - {fileID: 21300000, guid: 4a42488308f44c340b0db7787442be96, type: 3}
   - {fileID: 21300000, guid: f286fa3549b2fa042a4b35bfd5824bbf, type: 3}
   - {fileID: 21300000, guid: 490813472257cc8458db5b73a911f05b, type: 3}
@@ -287,7 +286,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b275a10f99d4cb45b0392ef9db9f57b, type: 3}
   - {fileID: 21300000, guid: 6895f4adc6fd65e478c3a9d2255a3474, type: 3}
   - {fileID: 21300000, guid: 586916e3351d0da48bfb7d4ab5f467e7, type: 3}
-  DirectionMultiplier: 0
 --- !u!212 &212054588850260746
 SpriteRenderer:
   m_ObjectHideFlags: 1

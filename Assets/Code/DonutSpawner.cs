@@ -58,7 +58,7 @@ public class DonutSpawner : MonoBehaviour
                 int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
                 //sets donut type
                 spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
-                predictor.GetComponent<DonutPredictor>().Setup(donutInfo[0]);
+                predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
             }
             else //is a collectable
             {
@@ -68,15 +68,21 @@ public class DonutSpawner : MonoBehaviour
                 //set parent to this object
                 spawn.transform.parent = this.transform;
 
+                GameObject predictor;
+
                 //determine if starting location is left or right
                 float startX = StartX;
                 if (Random.Range(0, 2) == 0) //started left
                 {
                     startX = startX * -1;
+                    predictor = spawn.transform.Find("Collectable Predictor Left").gameObject;
+                    Destroy(spawn.transform.Find("Collectable Predictor Right").gameObject);
                 }
                 else //started right
                 {
-                    spawn.GetComponent<CollectableMovement>().DirectionMultiplier = -1;
+                    spawn.GetComponentInChildren<CollectableMovement>().DirectionMultiplier = -1;
+                    predictor = spawn.transform.Find("Collectable Predictor Right").gameObject;
+                    Destroy(spawn.transform.Find("Collectable Predictor Left").gameObject);
                 }
 
                 //start at a y between LowestY and HighestY on a 0.2
@@ -86,7 +92,9 @@ public class DonutSpawner : MonoBehaviour
                 spawn.transform.position = new Vector3(startX, startY, 0);
 
                 //sets collectable type
-                spawn.GetComponent<CollectableMovement>().Setup(Random.Range(0,4));
+                int collectType = Random.Range(0, 4);
+                spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
+                predictor.GetComponent<Predictor>().Setup(collectType);
             }
         }
     }

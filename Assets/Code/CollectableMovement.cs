@@ -37,7 +37,7 @@ public class CollectableMovement : MonoBehaviour
             //if close enough to end zone = delete
             if (Mathf.Abs(this.transform.position.x - endLocation.x) < 0.1f)
             {
-                Destroy(this.gameObject);
+                Destroy(transform.parent.gameObject);
             }
         }
     }
