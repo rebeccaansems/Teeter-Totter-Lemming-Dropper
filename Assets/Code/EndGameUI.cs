@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class EndGameUI : MonoBehaviour
 {
-    public CanvasGroup EndGamePanel, HighScorePanel;
+    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel;
     public Text TotalScoreText, TotalDonutText, TotalTimeText, HighscoreText;
     public PlayerStats PlayerInformation;
 
@@ -19,10 +19,15 @@ public class EndGameUI : MonoBehaviour
         //make invisible and buttons unusable
         EndGamePanel.interactable = false;
         HighScorePanel.interactable = false;
+        PausedPanel.interactable = false;
+
         EndGamePanel.blocksRaycasts = false;
         HighScorePanel.blocksRaycasts = false;
+        PausedPanel.blocksRaycasts = false;
+
         EndGamePanel.alpha = 0;
         HighScorePanel.alpha = 0;
+        PausedPanel.alpha = 0;
 
         //set time scale to normal
         Time.timeScale = 1;
@@ -136,6 +141,28 @@ public class EndGameUI : MonoBehaviour
 
         //save highscore table
         PlayerPrefs.Save();
+    }
+
+    public void OpenPauseMenu()
+    {
+        //opens pause panel
+        PausedPanel.interactable = true;
+        PausedPanel.blocksRaycasts = true;
+        PausedPanel.alpha = 1;
+
+        //stop time
+        Time.timeScale = 0;
+    }
+
+    public void ClosePauseMenu()
+    {
+        //closes pause panel
+        PausedPanel.interactable = false;
+        PausedPanel.blocksRaycasts = false;
+        PausedPanel.alpha = 0;
+
+        //start time
+        Time.timeScale = 1;
     }
 }
 

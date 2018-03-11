@@ -106,7 +106,7 @@ public class DonutSpawner : MonoBehaviour
                 }
 
                 //set end location direction
-                spawn.GetComponentInChildren<DonutMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
+                spawn.GetComponentInChildren<CollectableMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
                 
                 //sets collectable type in object and predictor
                 int collectType = Random.Range(0, 4);
