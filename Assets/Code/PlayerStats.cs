@@ -71,7 +71,7 @@ public class PlayerStats : MonoBehaviour
 
         //make bonus appear
         BonusImage.sprite = collectImage;
-        BonusText.text = "+" + score + " pts + 10 secs";
+        BonusText.text = "+" + score + " pts +10 secs";
         BonusTextAnimator.SetBool("fadeIn", true);
 
         if (bonus != null)
@@ -92,7 +92,7 @@ public class PlayerStats : MonoBehaviour
 
             //make bonus appear
             BonusImage.sprite = EmptySprite;
-            BonusText.text = "BONUS! Score x2" + " +30 secs";
+            BonusText.text = "BONUS! Score x2 +30 secs";
             BonusTextAnimator.SetBool("fadeIn", true);
 
             if (bonus != null)
