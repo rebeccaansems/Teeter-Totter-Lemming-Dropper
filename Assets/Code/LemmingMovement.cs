@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LemmingMovement : MonoBehaviour
 {
@@ -21,8 +22,9 @@ public class LemmingMovement : MonoBehaviour
 
     void Update()
     {
-        //if player clicks or presses screen and input is allowed and lemming is currently at top and lemming is doing idle animation
-        if (Input.GetMouseButtonDown(0) && Player.AllowInput && Mathf.Abs(transform.position.y - UpperLocation.y) < 0.05f &&
+        //if player presses screen in the game area and input is allowed and lemming is currently at top and lemming is doing idle animation
+        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y < 1750 && Player.TouchEnabled 
+            && Mathf.Abs(transform.position.y - UpperLocation.y) < 0.05f &&
             anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
         {
             //Lemming starts falling

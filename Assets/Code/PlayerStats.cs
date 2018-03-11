@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     public Sprite[] GatheredCollectables;
 
     public float TimerLength;
-    public bool AllowInput = true;
+    public bool TouchEnabled = true;
 
     private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
     private bool fullCollectAwarded = false;
