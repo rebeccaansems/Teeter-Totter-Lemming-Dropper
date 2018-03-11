@@ -173,6 +173,9 @@ public class EndGameUI : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        //disable player input
+        PlayerInformation.AllowInput = false;
+
         //opens pause panel
         PausedPanel.interactable = true;
         PausedPanel.blocksRaycasts = true;
@@ -191,6 +194,16 @@ public class EndGameUI : MonoBehaviour
 
         //start time
         Time.timeScale = 1;
+
+        StartCoroutine(DelayAllowingPlayerInput());
+    }
+
+    IEnumerator DelayAllowingPlayerInput()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        //enable player input
+        PlayerInformation.AllowInput = true;
     }
 
     public void OpenCreditsMenu()

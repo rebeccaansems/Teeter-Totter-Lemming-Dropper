@@ -7,7 +7,9 @@ public class PlayerStats : MonoBehaviour
     public Text ScoreText, TimerText;
     public Image[] Collectables;
     public Sprite[] GatheredCollectables;
+
     public float TimerLength;
+    public bool AllowInput = true;
 
     private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
     private bool fullCollectAwarded = false;

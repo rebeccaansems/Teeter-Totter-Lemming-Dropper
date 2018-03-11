@@ -7,6 +7,7 @@ public class LemmingMovement : MonoBehaviour
     public LemmingMovement OtherLemming;
     public GameObject TeeterTotter;
     public Animator FlowerAnimator;
+    public PlayerStats Player;
 
     public float FallSpeed, RotationAmount, TeeterRotationAmount;
     public float StartTeeterYPos;
@@ -20,8 +21,8 @@ public class LemmingMovement : MonoBehaviour
 
     void Update()
     {
-        //if player clicks or presses screen and lemming is currently at top and lemming is doing idle animation
-        if (Input.GetMouseButtonDown(0) && transform.position.y == UpperLocation.y &&
+        //if player clicks or presses screen and input is allowed and lemming is currently at top and lemming is doing idle animation
+        if (Input.GetMouseButtonDown(0) && Player.AllowInput && Mathf.Abs(transform.position.y - UpperLocation.y) < 0.05f &&
             anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
         {
             //Lemming starts falling
