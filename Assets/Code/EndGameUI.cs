@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class EndGameUI : MonoBehaviour
 {
-    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel, CreditsPanel;
+    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel, CreditsPanel, OtherAppsPanel;
     public Text TotalScoreText, TotalDonutText, TotalTimeText, HighscoreText;
     public PlayerStats PlayerInformation;
 
@@ -23,16 +23,19 @@ public class EndGameUI : MonoBehaviour
         HighScorePanel.interactable = false;
         PausedPanel.interactable = false;
         CreditsPanel.interactable = false;
+        OtherAppsPanel.interactable = false;
 
         EndGamePanel.blocksRaycasts = false;
         HighScorePanel.blocksRaycasts = false;
         PausedPanel.blocksRaycasts = false;
         CreditsPanel.blocksRaycasts = false;
+        OtherAppsPanel.blocksRaycasts = false;
 
         EndGamePanel.alpha = 0;
         HighScorePanel.alpha = 0;
         PausedPanel.alpha = 0;
         CreditsPanel.alpha = 0;
+        OtherAppsPanel.alpha = 0;
 
         //set time scale to normal
         Time.timeScale = 1;
@@ -41,7 +44,7 @@ public class EndGameUI : MonoBehaviour
     public void MakeEndGameVisible()
     {
         //if game hasn't ended yet
-        if (Time.timeScale != 0)
+        if (PlayerInformation.TimerLength < 0 && Time.timeScale != 0)
         {
             //stop time
             Time.timeScale = 0;
@@ -195,6 +198,16 @@ public class EndGameUI : MonoBehaviour
         CreditsPanel.interactable = true;
         CreditsPanel.blocksRaycasts = true;
         CreditsPanel.alpha = 1;
+
+        //closes pause panel
+        PausedPanel.interactable = true;
+        PausedPanel.blocksRaycasts = true;
+        PausedPanel.alpha = 1;
+
+        //opens pause panel
+        PausedPanel.interactable = true;
+        PausedPanel.blocksRaycasts = true;
+        PausedPanel.alpha = 1;
     }
 
     public void CloseCreditsMenu()
@@ -208,6 +221,55 @@ public class EndGameUI : MonoBehaviour
         PausedPanel.interactable = true;
         PausedPanel.blocksRaycasts = true;
         PausedPanel.alpha = 1;
+    }
+
+    public void OpenOtherAppsPanel()
+    {
+        //closes pause panel
+        PausedPanel.interactable = false;
+        PausedPanel.blocksRaycasts = false;
+        PausedPanel.alpha = 0;
+
+        //opens other apps panel
+        OtherAppsPanel.interactable = true;
+        OtherAppsPanel.blocksRaycasts = true;
+        OtherAppsPanel.alpha = 1;
+    }
+
+    public void CloseOtherAppsPanel()
+    {
+        //closes other apps panel
+        OtherAppsPanel.interactable = false;
+        OtherAppsPanel.blocksRaycasts = false;
+        OtherAppsPanel.alpha = 0;
+
+        //opens pause panel
+        PausedPanel.interactable = true;
+        PausedPanel.blocksRaycasts = true;
+        PausedPanel.alpha = 1;
+    }
+
+    public void OpenOtherAppURL(OtherApp app)
+    {
+#if UNITY_ANDROID || UNITY_EDITOR
+        if (app.GooglePlayURL == string.Empty)
+        {
+            Application.OpenURL(app.AppleURL);
+        }
+        else
+        {
+            Application.OpenURL(app.GooglePlayURL);
+        }
+#else
+        if (app.AppleURL == string.Empty)
+        {
+            Application.OpenURL(app.GooglePlayURL);
+        }
+        else
+        {
+            Application.OpenURL(app.AppleURL);
+        }
+#endif
     }
 }
 
