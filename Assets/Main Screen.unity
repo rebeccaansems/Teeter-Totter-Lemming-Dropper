@@ -237,10 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1009,7 +1009,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 153029279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 27317948}
+        m_MethodName: ShareGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &153029279
@@ -2356,7 +2367,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542839505}
   m_LocalRotation: {x: -0, y: -0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: 0.05000007, y: -5.6, z: -3}
+  m_LocalPosition: {x: 0.05, y: -4.7, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2004385901}
@@ -2435,13 +2446,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LowerLocation: {x: -1.3, y: -3.1, z: 0}
-  UpperLocation: {x: -1.3, y: 3.5, z: 0}
+  UpperLocation: {x: -1.3, y: 2.6, z: 0}
   OtherLemming: {fileID: 1379860281}
   TeeterTotter: {fileID: 431994977}
   FlowerAnimator: {fileID: 2004385902}
   FallSpeed: 7
   RotationAmount: 15
-  TeeterRotationAmount: 4.2
+  TeeterRotationAmount: 5
   StartTeeterYPos: -2.2
 --- !u!70 &542839510
 CapsuleCollider2D:
@@ -3406,8 +3417,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 761296944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0464, y: 0, z: 1}
-  m_LocalScale: {x: 0.8, y: 6, z: 1}
+  m_LocalPosition: {x: 0.0469, y: -0.9724, z: 1}
+  m_LocalScale: {x: 0.79999995, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 1415407529}
   m_RootOrder: 0
@@ -3820,7 +3831,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1036035585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0464, y: 0, z: 1}
+  m_LocalPosition: {x: 0.0481, y: -0.9724, z: 1}
   m_LocalScale: {x: 0.79999995, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 2004385901}
@@ -4964,13 +4975,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LowerLocation: {x: 1.3, y: -3.1, z: 0}
-  UpperLocation: {x: 1.3, y: 3.5, z: 0}
+  UpperLocation: {x: 1.3, y: 2.6, z: 0}
   OtherLemming: {fileID: 542839509}
   TeeterTotter: {fileID: 431994977}
   FlowerAnimator: {fileID: 1415407530}
   FallSpeed: 7
   RotationAmount: -15
-  TeeterRotationAmount: -4.2
+  TeeterRotationAmount: -5
   StartTeeterYPos: -2.2
 --- !u!70 &1379860282
 CapsuleCollider2D:
@@ -5087,7 +5098,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1415407527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.5, z: 0}
+  m_LocalPosition: {x: 1.35, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 761296945}
@@ -5479,7 +5490,7 @@ MonoBehaviour:
   CollectablePrefab: {fileID: 1145386409270530, guid: 5d202b6a558232f489d4007410376452,
     type: 2}
   LowestY: -2
-  HighestY: 1.8
+  HighestY: 1.3
 --- !u!1 &1545829619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,7 +5565,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1545829622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 27317948}
+        m_MethodName: ShareGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1545829622
@@ -7555,7 +7577,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2004385899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.5, z: 0}
+  m_LocalPosition: {x: -1.35, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1036035586}
