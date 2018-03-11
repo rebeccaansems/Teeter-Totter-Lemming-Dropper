@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VoxelBusters.NativePlugins;
 
 public class EndGameUI : MonoBehaviour
 {
@@ -270,6 +271,26 @@ public class EndGameUI : MonoBehaviour
             Application.OpenURL(app.AppleURL);
         }
 #endif
+    }
+
+    public void ShareGame()
+    {
+        SocialShareSheet _shareSheet = new SocialShareSheet();
+        _shareSheet.Text = "I just got a" + PlayerPrefs.GetInt("Score0", 0) + " on Teeter Totter Lemming Dropper, can you beat that?";
+
+#if UNITY_IOS
+        _shareSheet.URL = "https://itunes.apple.com/us/app/teeter-totter-lemming-dropper/id1358140021?ls=1&mt=8";
+#elif UNITY_ANDROID
+        _shareSheet.URL = "https://play.google.com/store/apps/details?id=com.RebeccaAnsems.teetertotter&hl=en";
+#endif
+
+        // Show composer
+        NPBinding.UI.SetPopoverPointAtLastTouchPosition(); // To show popover at last touch point on iOS. On Android, its ignored.
+        NPBinding.Sharing.ShowView(_shareSheet, FinishedSharing);
+    }
+
+    private void FinishedSharing(eShareResult _result)
+    {
     }
 }
 
