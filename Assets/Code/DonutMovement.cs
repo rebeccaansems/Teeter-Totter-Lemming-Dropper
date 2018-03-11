@@ -4,7 +4,7 @@ public class DonutMovement : MonoBehaviour
 {
     public float Speed;
     //is left or right
-    public int DirectionMultiplier, DonutScore;
+    public int DirectionMultiplier, DonutScore, DonutSprite;
     public Sprite[] DonutSprites;
 
     private bool hasBeenSetup = false;
@@ -18,7 +18,8 @@ public class DonutMovement : MonoBehaviour
         //determines the location where donut will be deleted
         endLocation = new Vector3(endX * DirectionMultiplier, this.transform.position.y, 0);
         //set the sprite
-        this.GetComponent<SpriteRenderer>().sprite = DonutSprites[donutSprite];
+        DonutSprite = donutSprite;
+        this.GetComponent<SpriteRenderer>().sprite = DonutSprites[DonutSprite];
         //set the score per donut
         DonutScore = score;
         //setup has been complete

@@ -1,21 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
     public EndGameUI EndGame;
-    public Text ScoreText, TimerText;
+    public Image BonusImage;
+    public Text ScoreText, TimerText, BonusText;
     public Image[] Collectables;
     public Sprite[] GatheredCollectables;
+    public Animator BonusTextAnimator;
+    public Sprite EmptySprite;
 
     public float TimerLength;
     public bool TouchEnabled = true;
+
+    private Coroutine bonus;
 
     private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
     private bool fullCollectAwarded = false;
 
     //Increase score and num donuts eaten
-    public void AddDonutEaten(int score, bool isLeftLemming)
+    public void AddDonutEaten(Sprite donutImage, int score, bool isLeftLemming)
     {
         //increase player score by given amount
         playerScore += score;
@@ -33,10 +39,27 @@ public class PlayerStats : MonoBehaviour
         }
         //display updated score
         ScoreText.text = "Score: " + playerScore.ToString("00000");
+
+        //make bonus appear
+        BonusImage.sprite = donutImage;
+        BonusText.text = "+" + score + " pts";
+        BonusTextAnimator.SetBool("fadeIn", true);
+
+        if (bonus != null)
+        {
+            StopCoroutine(bonus);
+        }
+        bonus = StartCoroutine(ShowBonusText());
+    }
+
+    IEnumerator ShowBonusText()
+    {
+        yield return new WaitForSeconds(3);
+        BonusTextAnimator.SetBool("fadeIn", false);
     }
 
     //Increase time and collectables eaten
-    public void AddCollectableEaten(int score, int collect)
+    public void AddCollectableEaten(Sprite collectImage, int score, int collect)
     {
         //increase player score by given amount
         playerScore += score;
@@ -45,6 +68,17 @@ public class PlayerStats : MonoBehaviour
 
         //increase total time remaining  by 10 seconds
         AddTime(10);
+
+        //make bonus appear
+        BonusImage.sprite = collectImage;
+        BonusText.text = "+" + score + " pts + 10 secs";
+        BonusTextAnimator.SetBool("fadeIn", true);
+
+        if (bonus != null)
+        {
+            StopCoroutine(bonus);
+        }
+        bonus = StartCoroutine(ShowBonusText());
 
         //if all four collectabls have been gathered
         if (HaveAllCollectablesBeenGathered())
@@ -55,6 +89,17 @@ public class PlayerStats : MonoBehaviour
             playerScore = playerScore * 2;
             //show updated score
             ScoreText.text = "Score: " + playerScore.ToString("00000");
+
+            //make bonus appear
+            BonusImage.sprite = EmptySprite;
+            BonusText.text = "BONUS! Score x2" + " +30 secs";
+            BonusTextAnimator.SetBool("fadeIn", true);
+
+            if (bonus != null)
+            {
+                StopCoroutine(bonus);
+            }
+            bonus = StartCoroutine(ShowBonusText());
         }
     }
 
