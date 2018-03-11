@@ -2,19 +2,21 @@
 
 public class DonutMovement : MonoBehaviour
 {
-    public float Speed, EndX;
+    public float Speed;
     //is left or right
     public int DirectionMultiplier, DonutScore;
     public Sprite[] DonutSprites;
 
     private bool hasBeenSetup = false;
+    private float endX;
     private Vector3 endLocation;
 
     //Set the information about donut after spawning
     public void Setup(int donutSprite, int score)
     {
+        endX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)).x + 2;
         //determines the location where donut will be deleted
-        endLocation = new Vector3(EndX * DirectionMultiplier, this.transform.position.y, 0);
+        endLocation = new Vector3(endX * DirectionMultiplier, this.transform.position.y, 0);
         //set the sprite
         this.GetComponent<SpriteRenderer>().sprite = DonutSprites[donutSprite];
         //set the score per donut
