@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static int k_GamesPlayed = 0;
+
     public EndGameUI EndGame;
     public Image BonusImage;
     public Text ScoreText, TimerText, BonusText;
@@ -65,6 +67,9 @@ public class PlayerStats : MonoBehaviour
         playerScore += score;
         //goldify the correct icon in the top panel
         Collectables[collect].sprite = GatheredCollectables[collect];
+
+        //show updated score
+        ScoreText.text = "Score: " + playerScore.ToString("00000");
 
         //increase total time remaining  by 10 seconds
         AddTime(10);

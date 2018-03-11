@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VoxelBusters.NativePlugins;
@@ -47,6 +48,9 @@ public class EndGameUI : MonoBehaviour
         //if game hasn't ended yet
         if (PlayerInformation.TimerLength < 0 && Time.timeScale != 0)
         {
+            //Increase number of games played
+            PlayerStats.k_GamesPlayed++;
+
             //stop time
             Time.timeScale = 0;
 
@@ -70,6 +74,12 @@ public class EndGameUI : MonoBehaviour
 
     public void ResetLevel()
     {
+        if (PlayerStats.k_GamesPlayed > 3 && Advertisement.IsReady())
+        {
+            Advertisement.Show();
+            PlayerStats.k_GamesPlayed = 0;
+        }
+
         //Reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -125,12 +135,12 @@ public class EndGameUI : MonoBehaviour
     {
         //put updated highscore information into text
         HighscoreText.text = string.Format("{1}: {0}\n{3}: {2}\n{5}: {4}\n{7}: {6}\n{9}: {8}\n{11}: {10}",
-            PlayerPrefs.GetInt("Score0", 0).ToString("0000"), PlayerPrefs.GetString("Date0", DateTime.Now.ToString("dd-MM-yy")),
-            PlayerPrefs.GetInt("Score1", 0).ToString("0000"), PlayerPrefs.GetString("Date1", DateTime.Now.ToString("dd-MM-yy")),
-            PlayerPrefs.GetInt("Score2", 0).ToString("0000"), PlayerPrefs.GetString("Date2", DateTime.Now.ToString("dd-MM-yy")),
-            PlayerPrefs.GetInt("Score3", 0).ToString("0000"), PlayerPrefs.GetString("Date3", DateTime.Now.ToString("dd-MM-yy")),
-            PlayerPrefs.GetInt("Score4", 0).ToString("0000"), PlayerPrefs.GetString("Date4", DateTime.Now.ToString("dd-MM-yy")),
-            PlayerPrefs.GetInt("Score5", 0).ToString("0000"), PlayerPrefs.GetString("Date5", DateTime.Now.ToString("dd-MM-yy")));
+            PlayerPrefs.GetInt("Score0", 0).ToString("0000"), PlayerPrefs.GetString("Date0", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")),
+            PlayerPrefs.GetInt("Score1", 0).ToString("0000"), PlayerPrefs.GetString("Date1", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")),
+            PlayerPrefs.GetInt("Score2", 0).ToString("0000"), PlayerPrefs.GetString("Date2", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")),
+            PlayerPrefs.GetInt("Score3", 0).ToString("0000"), PlayerPrefs.GetString("Date3", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")),
+            PlayerPrefs.GetInt("Score4", 0).ToString("0000"), PlayerPrefs.GetString("Date4", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")),
+            PlayerPrefs.GetInt("Score5", 0).ToString("0000"), PlayerPrefs.GetString("Date5", "Game -1: " + DateTime.Now.ToString("dd-MM-yy")));
     }
 
     private void UpdateHighScorePanel()
@@ -140,13 +150,13 @@ public class EndGameUI : MonoBehaviour
 
         //shove into a list all of the saved data and current data, defaults are 0 and today
         List<Tuple<int, string>> highscoreTable = new List<Tuple<int, string>>();
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score0", 0), PlayerPrefs.GetString("Date0", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score1", 0), PlayerPrefs.GetString("Date1", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score2", 0), PlayerPrefs.GetString("Date2", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score3", 0), PlayerPrefs.GetString("Date3", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score4", 0), PlayerPrefs.GetString("Date4", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score5", 0), PlayerPrefs.GetString("Date5", DateTime.Now.ToString("dd-MM-yy"))));
-        highscoreTable.Add(new Tuple<int, string>(playerInfo[0], DateTime.Now.ToString("dd-MM-yy")));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score0", 0), PlayerPrefs.GetString("Date0", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score1", 0), PlayerPrefs.GetString("Date1", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score2", 0), PlayerPrefs.GetString("Date2", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score3", 0), PlayerPrefs.GetString("Date3", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score4", 0), PlayerPrefs.GetString("Date4", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score5", 0), PlayerPrefs.GetString("Date5", "Game -1: " + DateTime.Now.ToString("dd-MM-yy"))));
+        highscoreTable.Add(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.k_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
 
         //sort highscore table by score, big -> small
         highscoreTable = highscoreTable.OrderBy(w => w.First).Reverse().ToList();
