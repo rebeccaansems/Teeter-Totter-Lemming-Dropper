@@ -14,7 +14,6 @@ public class DonutSpawner : MonoBehaviour
     {
         StartCoroutine(Spawn());
         startX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)).x + 3;
-        Debug.Log(startX);
     }
 
     //Spawn donuts and collectables

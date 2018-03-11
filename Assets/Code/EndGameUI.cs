@@ -12,6 +12,8 @@ public class EndGameUI : MonoBehaviour
     public Text TotalScoreText, TotalDonutText, TotalTimeText, HighscoreText;
     public PlayerStats PlayerInformation;
 
+    private int prevPanel = -1;
+
     private void Start()
     {
         Application.runInBackground = true;
@@ -65,7 +67,7 @@ public class EndGameUI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OpenHighScorePanel()
+    public void OpenHighScorePanel(int panel)
     {
         //opens highscore panel
         HighScorePanel.interactable = true;
@@ -77,6 +79,13 @@ public class EndGameUI : MonoBehaviour
         EndGamePanel.blocksRaycasts = false;
         EndGamePanel.alpha = 0;
 
+        //closes paused panel
+        PausedPanel.interactable = false;
+        PausedPanel.blocksRaycasts = false;
+        PausedPanel.alpha = 0;
+
+        prevPanel = panel;
+
         SetupHighScorePanel();
     }
 
@@ -87,10 +96,22 @@ public class EndGameUI : MonoBehaviour
         HighScorePanel.blocksRaycasts = false;
         HighScorePanel.alpha = 0;
 
-        //opens end game panel
-        EndGamePanel.interactable = true;
-        EndGamePanel.blocksRaycasts = true;
-        EndGamePanel.alpha = 1;
+        if (prevPanel == 0)
+        {
+            //opens end game panel
+            EndGamePanel.interactable = true;
+            EndGamePanel.blocksRaycasts = true;
+            EndGamePanel.alpha = 1;
+        }
+        else if (prevPanel == 1)
+        {
+            //opens end game panel
+            PausedPanel.interactable = true;
+            PausedPanel.blocksRaycasts = true;
+            PausedPanel.alpha = 1;
+        }
+
+        prevPanel = -1;
     }
 
     private void SetupHighScorePanel()
