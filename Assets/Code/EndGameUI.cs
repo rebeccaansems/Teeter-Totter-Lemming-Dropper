@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class EndGameUI : MonoBehaviour
 {
-    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel;
+    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel, CreditsPanel;
     public Text TotalScoreText, TotalDonutText, TotalTimeText, HighscoreText;
     public PlayerStats PlayerInformation;
 
@@ -22,14 +22,17 @@ public class EndGameUI : MonoBehaviour
         EndGamePanel.interactable = false;
         HighScorePanel.interactable = false;
         PausedPanel.interactable = false;
+        CreditsPanel.interactable = false;
 
         EndGamePanel.blocksRaycasts = false;
         HighScorePanel.blocksRaycasts = false;
         PausedPanel.blocksRaycasts = false;
+        CreditsPanel.blocksRaycasts = false;
 
         EndGamePanel.alpha = 0;
         HighScorePanel.alpha = 0;
         PausedPanel.alpha = 0;
+        CreditsPanel.alpha = 0;
 
         //set time scale to normal
         Time.timeScale = 1;
@@ -184,6 +187,27 @@ public class EndGameUI : MonoBehaviour
 
         //start time
         Time.timeScale = 1;
+    }
+
+    public void OpenCreditsMenu()
+    {
+        //opens credits panel
+        CreditsPanel.interactable = true;
+        CreditsPanel.blocksRaycasts = true;
+        CreditsPanel.alpha = 1;
+    }
+
+    public void CloseCreditsMenu()
+    {
+        //closes credits panel
+        CreditsPanel.interactable = false;
+        CreditsPanel.blocksRaycasts = false;
+        CreditsPanel.alpha = 0;
+
+        //opens pause panel
+        PausedPanel.interactable = true;
+        PausedPanel.blocksRaycasts = true;
+        PausedPanel.alpha = 1;
     }
 }
 
