@@ -723,7 +723,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 225ca4015251328408de785780c73bf0, type: 3}
   BonusTextAnimator: {fileID: 947413326}
   EmptySprite: {fileID: 21300000, guid: c05e5d4442fefc04cbe88761239267e8, type: 3}
-  TimerLength: 60
+  TimerLength: 62
   TouchEnabled: 1
 --- !u!4 &114629205
 Transform:
@@ -6421,24 +6421,28 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 90
+    m_MaxSize: 70
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '{0}: {1}
+  m_Text: 'Game -1: 01-01-01: 1010
 
-    {2}: {3}
+    Game -1: 01-01-01: 1010
 
-    {4}: {5}
+    Game -1: 01-01-01: 1010
 
-    {6}: {7}
+    Game -1: 01-01-01: 1010
 
-    {8}: {9}
+    Game -1: 01-01-01: 1010
 
-    {10}: {11}'
+    Game -1: 01-01-01: 1010
+
+    Game -1: 01-01-01: 1010
+
+    Game -1: 01-01-01: 1010'
 --- !u!222 &1617569098
 CanvasRenderer:
   m_ObjectHideFlags: 0

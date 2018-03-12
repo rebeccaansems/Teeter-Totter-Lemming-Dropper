@@ -22,6 +22,11 @@ public class PlayerStats : MonoBehaviour
     private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
     private bool fullCollectAwarded = false;
 
+    private void Start()
+    {
+        k_GamesPlayed = PlayerPrefs.GetInt("GamesPlayed", 0);
+    }
+
     //Increase score and num donuts eaten
     public void AddDonutEaten(Sprite donutImage, int score, bool isLeftLemming)
     {
@@ -97,7 +102,7 @@ public class PlayerStats : MonoBehaviour
 
             //make bonus appear
             BonusImage.sprite = EmptySprite;
-            BonusText.text = "BONUS! Score x2 +30 secs";
+            BonusText.text = "BONUS! Score x2";
             BonusTextAnimator.SetBool("fadeIn", true);
 
             if (bonus != null)

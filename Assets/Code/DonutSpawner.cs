@@ -19,13 +19,11 @@ public class DonutSpawner : MonoBehaviour
     //Spawn donuts and collectables
     IEnumerator Spawn()
     {
+        yield return new WaitForSeconds(1);
         while (true)
         {
-            //every 0.1 - 5 seconds spawn a new donut
-            yield return new WaitForSeconds(Random.Range(0.1f, 5f));
-
             //1 in 30 chance of being a collectable instead of a donut
-            if (Random.Range(0, 31) > 25)
+            if (Random.Range(0, 31) < 27)
             {
                 //spawn new donut
                 spawn = Instantiate(DonutPrefab);
@@ -112,6 +110,8 @@ public class DonutSpawner : MonoBehaviour
                 spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
                 predictor.GetComponent<Predictor>().Setup(collectType);
             }
+            //every 0.1 - 5 seconds spawn a new donut
+            yield return new WaitForSeconds(Random.Range(0.1f, 5f));
         }
     }
 
