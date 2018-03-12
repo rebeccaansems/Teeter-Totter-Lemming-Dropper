@@ -20,24 +20,27 @@ public class EndGameUI : MonoBehaviour
     {
         Application.runInBackground = true;
 
-        //make invisible and buttons unusable
-        EndGamePanel.interactable = false;
-        HighScorePanel.interactable = false;
-        PausedPanel.interactable = false;
-        CreditsPanel.interactable = false;
-        OtherAppsPanel.interactable = false;
+        if (EndGamePanel != null)
+        {
+            //make invisible and buttons unusable
+            EndGamePanel.interactable = false;
+            HighScorePanel.interactable = false;
+            PausedPanel.interactable = false;
+            CreditsPanel.interactable = false;
+            OtherAppsPanel.interactable = false;
 
-        EndGamePanel.blocksRaycasts = false;
-        HighScorePanel.blocksRaycasts = false;
-        PausedPanel.blocksRaycasts = false;
-        CreditsPanel.blocksRaycasts = false;
-        OtherAppsPanel.blocksRaycasts = false;
+            EndGamePanel.blocksRaycasts = false;
+            HighScorePanel.blocksRaycasts = false;
+            PausedPanel.blocksRaycasts = false;
+            CreditsPanel.blocksRaycasts = false;
+            OtherAppsPanel.blocksRaycasts = false;
 
-        EndGamePanel.alpha = 0;
-        HighScorePanel.alpha = 0;
-        PausedPanel.alpha = 0;
-        CreditsPanel.alpha = 0;
-        OtherAppsPanel.alpha = 0;
+            EndGamePanel.alpha = 0;
+            HighScorePanel.alpha = 0;
+            PausedPanel.alpha = 0;
+            CreditsPanel.alpha = 0;
+            OtherAppsPanel.alpha = 0;
+        }
 
         //set time scale to normal
         Time.timeScale = 1;
@@ -314,6 +317,19 @@ public class EndGameUI : MonoBehaviour
 
     private void FinishedSharing(eShareResult _result)
     {
+    }
+
+    public void StartGame()
+    {
+        this.GetComponent<Animator>().SetBool("fadeOut", true);
+        StartCoroutine(WaitForSceneToLoad());
+    }
+
+    IEnumerator WaitForSceneToLoad()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        yield return new WaitForSeconds(1.1f);
+        SceneManager.UnloadSceneAsync(0);
     }
 }
 

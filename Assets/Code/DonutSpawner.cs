@@ -25,7 +25,7 @@ public class DonutSpawner : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0.1f, 5f));
 
             //1 in 30 chance of being a collectable instead of a donut
-            if (Random.Range(0, 31) > 15)
+            if (Random.Range(0, 31) > 25)
             {
                 //spawn new donut
                 spawn = Instantiate(DonutPrefab);
