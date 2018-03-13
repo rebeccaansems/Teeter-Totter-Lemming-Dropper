@@ -80,5 +80,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+<<<<<<< HEAD
 # Include DLLs 
+=======
+>>>>>>> origin/master
 *.dll
