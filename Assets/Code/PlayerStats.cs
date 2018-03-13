@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public static int k_GamesPlayed = 0;
+    public static float k_SFXVolume, k_MusicVolume;
 
     public EndGameUI EndGame;
     public Image BonusImage;
@@ -13,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     public Sprite[] GatheredCollectables;
     public Animator BonusTextAnimator;
     public Sprite EmptySprite;
+    public Slider SfxSlider, MusicSlider;
 
     public float TimerLength;
     public bool TouchEnabled = true;
@@ -25,6 +27,12 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         k_GamesPlayed = PlayerPrefs.GetInt("GamesPlayed", 0);
+
+        k_SFXVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
+        k_MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+
+        SfxSlider.value = k_SFXVolume;
+        MusicSlider.value = k_MusicVolume;
     }
 
     //Increase score and num donuts eaten
@@ -166,5 +174,17 @@ public class PlayerStats : MonoBehaviour
     public int[] GetPlayerInformation()
     {
         return new int[] { playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus };
+    }
+
+    public void SetSFXVolume()
+    {
+        k_SFXVolume = SfxSlider.value;
+        PlayerPrefs.SetFloat("SfxVolume", k_SFXVolume);
+    }
+
+    public void SetMusicVolume()
+    {
+        k_MusicVolume = MusicSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", k_MusicVolume);
     }
 }

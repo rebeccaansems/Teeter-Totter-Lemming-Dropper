@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  EndX: 3.5
   DirectionMultiplier: 1
   DonutScore: 0
+  DonutSprite: 0
   DonutSprites:
   - {fileID: 21300000, guid: 4a42488308f44c340b0db7787442be96, type: 3}
   - {fileID: 21300000, guid: f286fa3549b2fa042a4b35bfd5824bbf, type: 3}

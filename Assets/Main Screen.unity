@@ -429,7 +429,18 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114629204}
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &105655612
@@ -723,6 +734,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 225ca4015251328408de785780c73bf0, type: 3}
   BonusTextAnimator: {fileID: 947413326}
   EmptySprite: {fileID: 21300000, guid: c05e5d4442fefc04cbe88761239267e8, type: 3}
+  SfxSlider: {fileID: 72767059}
+  MusicSlider: {fileID: 1297711862}
   TimerLength: 62
   TouchEnabled: 1
 --- !u!4 &114629205
@@ -870,6 +883,7 @@ GameObject:
   - component: {fileID: 132019629}
   - component: {fileID: 132019628}
   - component: {fileID: 132019627}
+  - component: {fileID: 132019626}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -877,6 +891,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &132019626
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 132019625}
+  m_Enabled: 1
 --- !u!124 &132019627
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2419,6 +2440,7 @@ GameObject:
   - component: {fileID: 542839510}
   - component: {fileID: 542839509}
   - component: {fileID: 542839511}
+  - component: {fileID: 542839513}
   m_Layer: 0
   m_Name: Norwegian Lemming
   m_TagString: Untagged
@@ -2568,6 +2590,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &542839513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 542839505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1c6397e4c2ff64aa935562e9488970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: a7a9d6a61e4d91a43b1ff3e56d42c8de, type: 3}
+  - {fileID: 8300000, guid: e0062641699349a46bf9bbd228e60b97, type: 3}
+  - {fileID: 8300000, guid: ba5886978e317fa4da72a7392948ce0a, type: 3}
+  - {fileID: 8300000, guid: 8f2f8dfc2de6c854186f6363d1f1b364, type: 3}
 --- !u!1 &558861827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4890,7 +4928,18 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114629204}
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1298778089
@@ -5118,6 +5167,7 @@ GameObject:
   - component: {fileID: 1379860282}
   - component: {fileID: 1379860281}
   - component: {fileID: 1379860283}
+  - component: {fileID: 1379860285}
   m_Layer: 0
   m_Name: Grey Lemming
   m_TagString: Untagged
@@ -5267,6 +5317,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1379860285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379860277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1c6397e4c2ff64aa935562e9488970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: a7a9d6a61e4d91a43b1ff3e56d42c8de, type: 3}
+  - {fileID: 8300000, guid: e0062641699349a46bf9bbd228e60b97, type: 3}
+  - {fileID: 8300000, guid: ba5886978e317fa4da72a7392948ce0a, type: 3}
+  - {fileID: 8300000, guid: 8f2f8dfc2de6c854186f6363d1f1b364, type: 3}
 --- !u!1 &1415407527
 GameObject:
   m_ObjectHideFlags: 0
