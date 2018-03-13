@@ -28,6 +28,7 @@ public class LemmingMovement : MonoBehaviour
             anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
         {
             //Lemming starts falling
+            this.GetComponent<PlayAudio>().Play(5);
             StartCoroutine(Fall());
         }
     }
@@ -70,6 +71,7 @@ public class LemmingMovement : MonoBehaviour
 
     public IEnumerator RespondFall()
     {
+        this.GetComponent<PlayAudio>().Play(6);
         //set flower animation to idle
         FlowerAnimator.SetBool("isLanding", false);
 
