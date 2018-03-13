@@ -6,10 +6,7 @@ public class PlayAudio : MonoBehaviour
 
     public void Play()
     {
-        if (AudioClips.Length > 0)
-        {
-            AudioSource.PlayClipAtPoint(AudioClips[0], Camera.main.transform.position, PlayerStats.k_SFXVolume);
-        }
+        AudioSource.PlayClipAtPoint(AudioClips[0], Camera.main.transform.position, PlayerStats.k_SFXVolume);
     }
 
     public void Play(int num)

@@ -23,12 +23,11 @@ public class LemmingMovement : MonoBehaviour
     void Update()
     {
         //if player presses screen in the game area and input is allowed and lemming is currently at top and lemming is doing idle animation
-        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y < 1750 && Player.TouchEnabled 
+        if (Input.GetMouseButtonDown(0) && Input.mousePosition.y < 1750 && Player.TouchEnabled
             && Mathf.Abs(transform.position.y - UpperLocation.y) < 0.05f &&
             anim.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
         {
             //Lemming starts falling
-            this.GetComponent<PlayAudio>().Play(5);
             StartCoroutine(Fall());
         }
     }
@@ -53,6 +52,7 @@ public class LemmingMovement : MonoBehaviour
         //start lemming finish jumping and then idle animation
         anim.SetBool("isJumping", false);
 
+        this.GetComponent<PlayAudio>().Play(6);
         //fall with teeter totter moving the rest of the way
         while (this.transform.position.y > LowerLocation.y)
         {
@@ -71,7 +71,6 @@ public class LemmingMovement : MonoBehaviour
 
     public IEnumerator RespondFall()
     {
-        this.GetComponent<PlayAudio>().Play(6);
         //set flower animation to idle
         FlowerAnimator.SetBool("isLanding", false);
 
@@ -95,5 +94,6 @@ public class LemmingMovement : MonoBehaviour
 
         //set flower animation to lemming is landing
         FlowerAnimator.SetBool("isLanding", true);
+        this.GetComponent<PlayAudio>().Play(5);
     }
 }
