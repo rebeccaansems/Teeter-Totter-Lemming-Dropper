@@ -349,6 +349,20 @@ public class EndGameUI : MonoBehaviour
         MainScreenPanel.GetComponent<Animator>().SetBool("fadeOut", true);
         StartCoroutine(DelayAllowingPlayerInput());
     }
+
+    public void ButtonPressed()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            this.GetComponent<PlayAudio>().Play();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            this.GetComponent<PlayAudio>().Play();
+        }
+    }
 }
 
 public class Tuple<T1, T2>
