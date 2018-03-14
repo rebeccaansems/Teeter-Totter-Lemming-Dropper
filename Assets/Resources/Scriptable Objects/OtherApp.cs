@@ -31,6 +31,6 @@ public class OtherApp: ScriptableObject
         UnityEditor.AssetDatabase.Refresh();
         UnityEditor.EditorUtility.FocusProjectWindow();
         UnityEditor.Selection.activeObject = asset;
-#endif
     }
+#endif
 }
