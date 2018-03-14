@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LemmingMovement : MonoBehaviour
 {
-    public Vector3 LowerLocation, UpperLocation;
+    public Vector3 LowerLocation, UpperLocation, TeeterRotation;
     public LemmingMovement OtherLemming;
     public GameObject TeeterTotter;
     public Animator FlowerAnimator;
@@ -64,6 +64,11 @@ public class LemmingMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, LowerLocation, moveStep);
             yield return new WaitForFixedUpdate();
         }
+
+        //teeter totter set rotation 
+        Quaternion rotation = Quaternion.identity;
+        rotation.eulerAngles = TeeterRotation;
+        TeeterTotter.transform.rotation = rotation;
 
         //set rotation of lemming so it appears to be on the teeter totter
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, RotationAmount));
