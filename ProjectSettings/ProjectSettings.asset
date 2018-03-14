@@ -11,8 +11,8 @@ PlayerSettings:
   targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Teeter Totter Dropper
+  companyName: Rebecca Ansems
+  productName: Teeter Totter Lemming Dropper
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.32156864, g: 0.87843144, b: 1, a: 1}
@@ -266,131 +266,138 @@ PlayerSettings:
   - m_BuildTarget: iPhone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ce9ff87504cc2e24c8a93032bc31696d, type: 3}
+      m_Icon: {fileID: 2800000, guid: 1d32f7806cde14940852670aae0710e0, type: 3}
       m_Width: 180
       m_Height: 180
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a9a7d195ce9b7b54c8822bfbd7827b24, type: 3}
+      m_Icon: {fileID: 2800000, guid: 4ea18398f332fd448a3607563d640382, type: 3}
       m_Width: 167
       m_Height: 167
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d06f9d7f3ac03054396bb7fe389e6313, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9f65b4b2666fb8a4a86076481cd68015, type: 3}
       m_Width: 152
       m_Height: 152
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 909951760f9c9c04c8e98acf7eff1a71, type: 3}
+      m_Icon: {fileID: 2800000, guid: a1fc525b472f33d4ab3c99003b807c46, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 4bfbb7fdc3b03db478a82320329ea75b, type: 3}
+      m_Icon: {fileID: 2800000, guid: 59531091618d23b4d95e0600b443fa68, type: 3}
       m_Width: 120
       m_Height: 120
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 15bcdcd102e9bd24eb73737ffe41d8dc, type: 3}
+      m_Icon: {fileID: 2800000, guid: a990e1db3342c1445a8c4ff5f97ecf16, type: 3}
       m_Width: 114
       m_Height: 114
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 6d5100c756269394ba2a44f918ca1667, type: 3}
+      m_Icon: {fileID: 2800000, guid: 05ebe1a232cf336488387c1630df9792, type: 3}
       m_Width: 76
       m_Height: 76
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 28d0db167cdffd94097950003bac7e3a, type: 3}
+      m_Icon: {fileID: 2800000, guid: 043490295a662a8439589124fbe3d44d, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 6cc52797ceca25e4ebd4b8377abfb8a0, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5745d8470ff457a49bf261af3d0051e2, type: 3}
       m_Width: 57
       m_Height: 57
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 77c1a9cb465027d409438abf9c0a52be, type: 3}
+      m_Icon: {fileID: 2800000, guid: c02213efb3569fa4dbbc90b720940ecf, type: 3}
       m_Width: 120
       m_Height: 120
       m_Kind: 3
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b906077b9ee84a84aa786b87200271c8, type: 3}
+      m_Icon: {fileID: 2800000, guid: d6bd70ad2bfdac34da182e7f2cbc3e68, type: 3}
       m_Width: 80
       m_Height: 80
       m_Kind: 3
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 767213a6a03ed5a47a2b974a23bdbd34, type: 3}
+      m_Icon: {fileID: 2800000, guid: 33aae2d7d4569d846902477490b28b42, type: 3}
       m_Width: 40
       m_Height: 40
       m_Kind: 3
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 4bb8f776b27756441aefd022c695bc9e, type: 3}
+      m_Icon: {fileID: 2800000, guid: 6365b5fc4cccb0b44a57e8ba0deffa82, type: 3}
       m_Width: 87
       m_Height: 87
       m_Kind: 1
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e64139e69210e214ebfd9645c43ee3ca, type: 3}
+      m_Icon: {fileID: 2800000, guid: 70cef40c62af5eb4a8d8106e9f3a16f5, type: 3}
       m_Width: 58
       m_Height: 58
       m_Kind: 1
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d6e015fb9257bda4785493111ccf08ec, type: 3}
+      m_Icon: {fileID: 2800000, guid: 81cde54da4dfa4e4ea1b5b3ede66a73f, type: 3}
       m_Width: 29
       m_Height: 29
       m_Kind: 1
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 20dc417dcb59071439ece7b1d572e28e, type: 3}
+      m_Icon: {fileID: 2800000, guid: 73bbf97d3efb38943b28ae767e1d9ed1, type: 3}
       m_Width: 60
       m_Height: 60
       m_Kind: 2
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ecc1090581943944cbbc79d6db8d80cf, type: 3}
+      m_Icon: {fileID: 2800000, guid: 538a84300fcb3b94bb37cd689a47b670, type: 3}
       m_Width: 40
       m_Height: 40
       m_Kind: 2
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 3f7d0c1213e9c964bad01dd9e58af589, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9eb8ba5d7b035884d95b2cba0e4c33bb, type: 3}
       m_Width: 20
       m_Height: 20
       m_Kind: 2
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 09bf88f6eadfae748b8749dbace57810, type: 3}
+      m_Icon: {fileID: 2800000, guid: a8703a612094fa74d9559c78cfddbeb9, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 4
   - m_BuildTarget: Android
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 15ec2a4ded478be45bac8ece1cd1f6f4, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5f7265154074476419822f17cf5c0655, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 909951760f9c9c04c8e98acf7eff1a71, type: 3}
+      m_Icon: {fileID: 2800000, guid: a1fc525b472f33d4ab3c99003b807c46, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a6dee225c1d8a6749bdeeaeacbef3369, type: 3}
+      m_Icon: {fileID: 2800000, guid: 43f4f27162cfacd4084c668749a91902, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 28d0db167cdffd94097950003bac7e3a, type: 3}
+      m_Icon: {fileID: 2800000, guid: 043490295a662a8439589124fbe3d44d, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 84531b09f8c08e74a83b27bf9e8b1967, type: 3}
+      m_Icon: {fileID: 2800000, guid: aaa26763bff8301439477450c5ece22a, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 2a481db418515ee4b9c016ad41f55885, type: 3}
+      m_Icon: {fileID: 2800000, guid: a7bbd91cc1dbed544adc20cff09ff715, type: 3}
       m_Width: 36
       m_Height: 36
+      m_Kind: 0
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: a8703a612094fa74d9559c78cfddbeb9, type: 3}
+      m_Width: 128
+      m_Height: 128
       m_Kind: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
