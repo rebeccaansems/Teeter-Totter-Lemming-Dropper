@@ -10,7 +10,7 @@ using VoxelBusters.NativePlugins;
 
 public class EndGameUI : MonoBehaviour
 {
-    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel, CreditsPanel, OtherAppsPanel;
+    public CanvasGroup EndGamePanel, HighScorePanel, PausedPanel, CreditsPanel, OtherAppsPanel, MainScreenPanel;
     public Text TotalScoreText, TotalDonutText, TotalTimeText, HighscoreText;
     public PlayerStats PlayerInformation;
 
@@ -18,32 +18,43 @@ public class EndGameUI : MonoBehaviour
 
     private void Start()
     {
-        Application.runInBackground = true;
-
-        if (EndGamePanel != null)
+        if (PlayerStats.k_GamesPlayedThisSession == 0)
         {
-            //make invisible and buttons unusable
-            EndGamePanel.interactable = false;
-            HighScorePanel.interactable = false;
-            PausedPanel.interactable = false;
-            CreditsPanel.interactable = false;
-            OtherAppsPanel.interactable = false;
+            Time.timeScale = 0;
 
-            EndGamePanel.blocksRaycasts = false;
-            HighScorePanel.blocksRaycasts = false;
-            PausedPanel.blocksRaycasts = false;
-            CreditsPanel.blocksRaycasts = false;
-            OtherAppsPanel.blocksRaycasts = false;
+            MainScreenPanel.interactable = true;
+            MainScreenPanel.blocksRaycasts = true;
+            MainScreenPanel.alpha = 1;
+        }
+        else
+        {
+            Time.timeScale = 1;
 
-            EndGamePanel.alpha = 0;
-            HighScorePanel.alpha = 0;
-            PausedPanel.alpha = 0;
-            CreditsPanel.alpha = 0;
-            OtherAppsPanel.alpha = 0;
+            MainScreenPanel.interactable = false;
+            MainScreenPanel.blocksRaycasts = false;
+            MainScreenPanel.alpha = 0;
         }
 
-        //set time scale to normal
-        Time.timeScale = 1;
+        Application.runInBackground = true;
+
+        //make invisible and buttons unusable
+        EndGamePanel.interactable = false;
+        HighScorePanel.interactable = false;
+        PausedPanel.interactable = false;
+        CreditsPanel.interactable = false;
+        OtherAppsPanel.interactable = false;
+
+        EndGamePanel.blocksRaycasts = false;
+        HighScorePanel.blocksRaycasts = false;
+        PausedPanel.blocksRaycasts = false;
+        CreditsPanel.blocksRaycasts = false;
+        OtherAppsPanel.blocksRaycasts = false;
+
+        EndGamePanel.alpha = 0;
+        HighScorePanel.alpha = 0;
+        PausedPanel.alpha = 0;
+        CreditsPanel.alpha = 0;
+        OtherAppsPanel.alpha = 0;
     }
 
     public void MakeEndGameVisible()
@@ -53,6 +64,7 @@ public class EndGameUI : MonoBehaviour
         {
             //Increase number of games played
             PlayerStats.k_GamesPlayed++;
+            PlayerStats.k_GamesPlayedThisSession++;
             PlayerPrefs.SetInt("GamesPlayed", PlayerStats.k_GamesPlayed);
 
             //stop time
@@ -78,10 +90,10 @@ public class EndGameUI : MonoBehaviour
 
     public void ResetLevel()
     {
-        if (PlayerStats.k_GamesPlayed % 3 == 0 && Advertisement.IsReady())
+        if (PlayerStats.k_GamesPlayedThisSession % 3 == 0 && Advertisement.IsReady())
         {
             Advertisement.Show();
-        } 
+        }
 
         //Reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -332,15 +344,8 @@ public class EndGameUI : MonoBehaviour
 
     public void StartGame()
     {
-        this.GetComponent<Animator>().SetBool("fadeOut", true);
-        StartCoroutine(WaitForSceneToLoad());
-    }
-
-    IEnumerator WaitForSceneToLoad()
-    {
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
-        yield return new WaitForSeconds(1.1f);
-        SceneManager.UnloadSceneAsync(0);
+        Time.timeScale = 1;
+        MainScreenPanel.GetComponent<Animator>().SetBool("fadeOut", true);
     }
 }
 

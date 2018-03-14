@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int k_GamesPlayed = 0;
+    public static int k_GamesPlayed = 0, k_GamesPlayedThisSession = 0;
     public static float k_SFXVolume, k_MusicVolume;
 
     public EndGameUI EndGame;
@@ -33,6 +33,11 @@ public class PlayerStats : MonoBehaviour
 
         SfxSlider.value = k_SFXVolume;
         MusicSlider.value = k_MusicVolume;
+
+        if (k_GamesPlayedThisSession == 0)
+        {
+            TimerLength += 3;
+        }
     }
 
     //Increase score and num donuts eaten

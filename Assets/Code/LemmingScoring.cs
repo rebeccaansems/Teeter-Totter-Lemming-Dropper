@@ -20,7 +20,7 @@ public class LemmingScoring : MonoBehaviour
             //run collectable eaten code and destroy object
             Player.AddCollectableEaten(collision.GetComponent<SpriteRenderer>().sprite, collision.GetComponent<CollectableMovement>().Score, collision.GetComponent<CollectableMovement>().CollectType);
             Destroy(collision.transform.parent.gameObject);
-            this.GetComponent<PlayAudio>().PlayRandom(0, 5);
+            this.GetComponent<PlayAudio>().Play(7);
         }
     }
 }
