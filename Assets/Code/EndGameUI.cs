@@ -21,6 +21,7 @@ public class EndGameUI : MonoBehaviour
         if (PlayerStats.k_GamesPlayedThisSession == 0)
         {
             Time.timeScale = 0;
+            PlayerInformation.TouchEnabled = false;
 
             MainScreenPanel.interactable = true;
             MainScreenPanel.blocksRaycasts = true;
@@ -346,6 +347,7 @@ public class EndGameUI : MonoBehaviour
     {
         Time.timeScale = 1;
         MainScreenPanel.GetComponent<Animator>().SetBool("fadeOut", true);
+        StartCoroutine(DelayAllowingPlayerInput());
     }
 }
 
