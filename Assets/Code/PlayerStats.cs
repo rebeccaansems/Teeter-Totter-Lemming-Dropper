@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     public EndGameUI EndGame;
     public Image BonusImage;
-    public Text ScoreText, TimerText, BonusText;
+    public Text InfoText, BonusText;
     public Image[] Collectables;
     public Sprite[] GatheredCollectables;
     public Animator BonusTextAnimator;
@@ -21,7 +21,7 @@ public class PlayerStats : MonoBehaviour
 
     private Coroutine bonus;
 
-    private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus;
+    private int playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus, totalCollectables;
     private bool fullCollectAwarded = false;
 
     private void Start()
@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour
             rightLemmingDonutsEaten++;
         }
         //display updated score
-        ScoreText.text = "Score: " + playerScore.ToString("00000");
+        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //make bonus appear
         BonusImage.sprite = donutImage;
@@ -83,11 +83,12 @@ public class PlayerStats : MonoBehaviour
     {
         //increase player score by given amount
         playerScore += score;
+        totalCollectables++;
         //goldify the correct icon in the top panel
         Collectables[collect].sprite = GatheredCollectables[collect];
 
         //show updated score
-        ScoreText.text = "Score: " + playerScore.ToString("00000");
+        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //increase total time remaining  by 10 seconds
         AddTime(10);
@@ -111,7 +112,7 @@ public class PlayerStats : MonoBehaviour
             //double total score
             playerScore = playerScore * 2;
             //show updated score
-            ScoreText.text = "Score: " + playerScore.ToString("00000");
+            InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
             //make bonus appear
             BonusImage.sprite = EmptySprite;
@@ -160,7 +161,7 @@ public class PlayerStats : MonoBehaviour
         //remove time for remaining time
         TimerLength -= Time.deltaTime;
         //update text with how much is remaining
-        TimerText.text = "Seconds Left: " + TimerLength.ToString("000");
+        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //if less than 0 seconds in game
         if (TimerLength < 0)
@@ -178,7 +179,7 @@ public class PlayerStats : MonoBehaviour
     //get array of players information
     public int[] GetPlayerInformation()
     {
-        return new int[] { playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus };
+        return new int[] { playerScore, donutsEaten, leftLemmingDonutsEaten, rightLemmingDonutsEaten, totalTimeBonus, totalCollectables };
     }
 
     public void SetSFXVolume()
