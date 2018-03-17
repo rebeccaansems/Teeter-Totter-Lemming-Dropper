@@ -86,7 +86,7 @@ public class EndGameUI : MonoBehaviour
             //set information on end screen
             int[] playerInfo = PlayerInformation.GetPlayerInformation();
 
-            TotalEndGameText.text = string.Format("<size=20>Total Score: {0}</size>\noOo\n<size=12> Total Donuts Eaten: {1}\nLeft Lemming: {2}\nRight Lemming: {3}\noOo\nTotal Time Bonuses: {4}\nTotal Collectables: {5}</size>",
+            TotalEndGameText.text = string.Format("<size=20>Total Score: {0}</size>\noOo\n<size=12> Total Donuts Eaten: {1}\nLeft Lemming: {2}\nRight Lemming: {3}\noOo\nTotal Time Bonuses: {4}sec\nTotal Collectables: {5}</size>",
                 playerInfo[0] + highscoreFlourish, playerInfo[1], playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5]);
         }
     }

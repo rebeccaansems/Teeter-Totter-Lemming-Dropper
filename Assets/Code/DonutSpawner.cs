@@ -135,7 +135,7 @@ public class DonutSpawner : MonoBehaviour
                 predictor.GetComponent<Predictor>().Setup(collectType);
             }
             //every 0.1 - 5 seconds spawn a new donut
-            yield return new WaitForSeconds(Random.Range(0.1f, 5f));
+            yield return new WaitForSeconds(Random.Range(0.1f, 4f));
         }
     }
 
