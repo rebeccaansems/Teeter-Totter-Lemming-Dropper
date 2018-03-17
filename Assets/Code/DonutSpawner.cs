@@ -21,7 +21,7 @@ public class DonutSpawner : MonoBehaviour
     {
         if (PlayerStats.k_GamesPlayedThisSession == 0)
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
         }
         else
         {
@@ -33,46 +33,62 @@ public class DonutSpawner : MonoBehaviour
             //1 in 30 chance of being a collectable instead of a donut
             if (Random.Range(0, 31) < 27)
             {
-                //spawn new donut
-                spawn = Instantiate(DonutPrefab);
-
-                //set parent to this object
-                spawn.transform.parent = this.transform;
-
-                //determine if starting location is left or right
-                if (Random.Range(0, 2) == 0) //started left
+                float[] usedY = new float[] { -1f, -1f, -1f };
+                //spawn up to 3 donuts at once
+                for (int i = 0; i < Random.Range(1, 4); i++)
                 {
-                    startX = startX * -1;
+                    yield return new WaitForSeconds(Random.Range(0f, 0.1f));
+
+                    //spawn new donut
+                    spawn = Instantiate(DonutPrefab);
+
+                    //set parent to this object
+                    spawn.transform.parent = this.transform;
+
+                    //determine if starting location is left or right
+                    if (Random.Range(0, 2) == 0) //started left
+                    {
+                        startX = startX * -1;
+                    }
+
+                    //start at a y between LowestY and HighestY on a 0.2
+                    float startY = Random.Range(LowestY, HighestY) * 5;
+                    startY = Mathf.Round(startY);
+                    startY = startY / 5;
+
+                    //don't allow donuts to share same y coords
+                    while (usedY[0] == startY || usedY[1] == startY)
+                    {
+                        startY = Random.Range(LowestY, HighestY) * 5;
+                        startY = Mathf.Round(startY);
+                        startY = startY / 5;
+                    }
+                    usedY[i] = startY;
+                    spawn.transform.position = new Vector3(startX, startY, 0);
+
+                    if (Mathf.Abs(spawn.transform.Find("Donut Predictor Right").transform.position.x) >
+                        Mathf.Abs(spawn.transform.Find("Donut Predictor Left").transform.position.x))
+                    {
+                        //get left predictor and destroy right
+                        predictor = spawn.transform.Find("Donut Predictor Left").gameObject;
+                        Destroy(spawn.transform.Find("Donut Predictor Right").gameObject);
+                    }
+                    else
+                    {
+                        //get left predictor and destroy right
+                        predictor = spawn.transform.Find("Donut Predictor Right").gameObject;
+                        Destroy(spawn.transform.Find("Donut Predictor Left").gameObject);
+                    }
+
+                    //set end location direction
+                    spawn.GetComponentInChildren<DonutMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
+
+                    //get donut type
+                    int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
+                    //sets donut type in donut and predictor
+                    spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
+                    predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
                 }
-
-                //start at a y between LowestY and HighestY on a 0.2
-                float startY = Random.Range(LowestY, HighestY) * 5;
-                startY = Mathf.Round(startY);
-                startY = startY / 5;
-                spawn.transform.position = new Vector3(startX, startY, 0);
-
-                if (Mathf.Abs(spawn.transform.Find("Donut Predictor Right").transform.position.x) >
-                    Mathf.Abs(spawn.transform.Find("Donut Predictor Left").transform.position.x))
-                {
-                    //get left predictor and destroy right
-                    predictor = spawn.transform.Find("Donut Predictor Left").gameObject;
-                    Destroy(spawn.transform.Find("Donut Predictor Right").gameObject);
-                }
-                else
-                {
-                    //get left predictor and destroy right
-                    predictor = spawn.transform.Find("Donut Predictor Right").gameObject;
-                    Destroy(spawn.transform.Find("Donut Predictor Left").gameObject);
-                }
-
-                //set end location direction
-                spawn.GetComponentInChildren<DonutMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
-
-                //get donut type
-                int[] donutInfo = GetDonutInfo(Random.Range(0, 50150));
-                //sets donut type in donut and predictor
-                spawn.GetComponentInChildren<DonutMovement>().Setup(donutInfo[0], donutInfo[1]);
-                predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
             }
             else //is a collectable
             {
@@ -112,7 +128,7 @@ public class DonutSpawner : MonoBehaviour
 
                 //set end location direction
                 spawn.GetComponentInChildren<CollectableMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
-                
+
                 //sets collectable type in object and predictor
                 int collectType = Random.Range(0, 4);
                 spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
