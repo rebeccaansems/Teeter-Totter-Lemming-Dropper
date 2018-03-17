@@ -37,7 +37,7 @@ public class DonutSpawner : MonoBehaviour
                 //spawn up to 3 donuts at once
                 for (int i = 0; i < Random.Range(1, 4); i++)
                 {
-                    yield return new WaitForSeconds(Random.Range(0f, 0.1f));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
 
                     //spawn new donut
                     spawn = Instantiate(DonutPrefab);
