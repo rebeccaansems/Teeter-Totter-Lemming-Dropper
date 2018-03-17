@@ -4,7 +4,7 @@ using UnityEngine;
 public class DonutSpawner : MonoBehaviour
 {
 
-    public GameObject DonutPrefab, CollectablePrefab;
+    public GameObject DonutPrefab, CollectablePrefab, BirdPrefab;
     public float LowestY, HighestY;
 
     private GameObject predictor, spawn;
@@ -30,8 +30,8 @@ public class DonutSpawner : MonoBehaviour
 
         while (true)
         {
-            //1 in 30 chance of being a collectable instead of a donut
-            if (Random.Range(0, 31) < 27)
+            int spawnNum = Random.Range(0, 35);
+            if (spawnNum < 27)
             {
                 float[] usedY = new float[] { -1f, -1f, -1f };
                 //spawn up to 3 donuts at once
@@ -51,17 +51,17 @@ public class DonutSpawner : MonoBehaviour
                         startX = startX * -1;
                     }
 
-                    //start at a y between LowestY and HighestY on a 0.2
-                    float startY = Random.Range(LowestY, HighestY) * 5;
+                    //start at a y between LowestY and HighestY on a 0.25
+                    float startY = Random.Range(LowestY, HighestY) * 4;
                     startY = Mathf.Round(startY);
-                    startY = startY / 5;
+                    startY = startY/ 4;
 
                     //don't allow donuts to share same y coords
                     while (usedY[0] == startY || usedY[1] == startY)
                     {
-                        startY = Random.Range(LowestY, HighestY) * 5;
+                        startY = Random.Range(LowestY, HighestY) * 4;
                         startY = Mathf.Round(startY);
-                        startY = startY / 5;
+                        startY = startY/ 4;
                     }
                     usedY[i] = startY;
                     spawn.transform.position = new Vector3(startX, startY, 0);
@@ -90,7 +90,7 @@ public class DonutSpawner : MonoBehaviour
                     predictor.GetComponent<Predictor>().Setup(donutInfo[0]);
                 }
             }
-            else //is a collectable
+            else if (spawnNum < 29) //is a collectable
             {
                 //spawn new collectable
                 spawn = Instantiate(CollectablePrefab);
@@ -106,10 +106,10 @@ public class DonutSpawner : MonoBehaviour
                     startX = startX * -1;
                 }
 
-                //start at a y between LowestY and HighestY on a 0.2
-                float startY = Random.Range(LowestY, HighestY) * 5;
+                //start at a y between LowestY and HighestY on a 0.25
+                float startY = Random.Range(LowestY, HighestY) * 4;
                 startY = Mathf.Round(startY);
-                startY = startY / 5;
+                startY = startY/ 4;
                 spawn.transform.position = new Vector3(startX, startY, 0);
 
                 if (Mathf.Abs(spawn.transform.Find("Collectable Predictor Right").transform.position.x) >
@@ -133,6 +133,50 @@ public class DonutSpawner : MonoBehaviour
                 int collectType = Random.Range(0, 4);
                 spawn.GetComponentInChildren<CollectableMovement>().Setup(collectType);
                 predictor.GetComponent<Predictor>().Setup(collectType);
+            }
+            else //spawn bird
+            {
+                //spawn new bird
+                spawn = Instantiate(BirdPrefab);
+
+                //set parent to this object
+                spawn.transform.parent = this.transform;
+
+                GameObject predictor;
+
+                //determine if starting location is left or right
+                if (Random.Range(0, 2) == 0) //started left
+                {
+                    startX = startX * -1;
+                }
+
+                //start at a y between LowestY and HighestY on a 0.25
+                float startY = Random.Range(LowestY, HighestY) * 4;
+                startY = Mathf.Round(startY);
+                startY = startY/ 4;
+                spawn.transform.position = new Vector3(startX, startY, 0);
+
+                if (Mathf.Abs(spawn.transform.Find("Bird Predictor Right").transform.position.x) >
+                    Mathf.Abs(spawn.transform.Find("Bird Predictor Left").transform.position.x))
+                {
+                    //get left predictor and destroy right
+                    predictor = spawn.transform.Find("Bird Predictor Left").gameObject;
+                    Destroy(spawn.transform.Find("Bird Predictor Right").gameObject);
+                }
+                else
+                {
+                    //get left predictor and destroy right
+                    predictor = spawn.transform.Find("Bird Predictor Right").gameObject;
+                    Destroy(spawn.transform.Find("Bird Predictor Left").gameObject);
+                }
+
+                //set end location direction
+                spawn.GetComponentInChildren<BirdMovement>().DirectionMultiplier = (int)Mathf.Clamp(startX, -1, 1) * -1;
+
+                //sets bird color in object and predictor
+                int color = Random.Range(0, 5);
+                spawn.GetComponentInChildren<BirdMovement>().Setup(color);
+                predictor.GetComponent<Predictor>().Setup(color);
             }
             //every 0.1 - 5 seconds spawn a new donut
             yield return new WaitForSeconds(Random.Range(0.1f, 4f));

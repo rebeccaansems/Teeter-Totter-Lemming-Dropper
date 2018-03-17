@@ -22,5 +22,12 @@ public class LemmingScoring : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
             this.GetComponent<PlayAudio>().Play(7);
         }
+        //if object collected was a bird
+        else if (collision.transform.tag == "Bird")
+        {
+            //knock out lemming and remove colliders
+            collision.transform.GetComponent<BirdMovement>().KillBird();
+            StartCoroutine(this.GetComponent<LemmingMovement>().KnockOut());
+        }
     }
 }

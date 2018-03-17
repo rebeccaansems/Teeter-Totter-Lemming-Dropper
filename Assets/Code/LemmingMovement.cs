@@ -105,4 +105,13 @@ public class LemmingMovement : MonoBehaviour
         this.GetComponent<PlayAudio>().Play(5);
         isFalling = false;
     }
+
+    public IEnumerator KnockOut()
+    {
+        this.GetComponent<CapsuleCollider2D>().enabled = false;
+        this.GetComponent<Animator>().SetBool("isDying", true);
+        yield return new WaitForSeconds(5);
+        this.GetComponent<Animator>().SetBool("isDying", false);
+        this.GetComponent<CapsuleCollider2D>().enabled = true;
+    }
 }

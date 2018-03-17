@@ -7270,6 +7270,7 @@ MonoBehaviour:
     type: 2}
   CollectablePrefab: {fileID: 1145386409270530, guid: 5d202b6a558232f489d4007410376452,
     type: 2}
+  BirdPrefab: {fileID: 1348770389994518, guid: fc6c587e0f9e0bc4991dfb265aabe18d, type: 2}
   LowestY: -2
   HighestY: 1.3
 --- !u!1 &1550959207
