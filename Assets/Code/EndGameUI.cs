@@ -31,6 +31,8 @@ public class EndGameUI : MonoBehaviour
         {
             Time.timeScale = 1;
 
+            MainScreenPanel.GetComponent<Animator>().SetBool("fadedOut", true);
+
             MainScreenPanel.interactable = false;
             MainScreenPanel.blocksRaycasts = false;
             MainScreenPanel.alpha = 0;
@@ -79,13 +81,13 @@ public class EndGameUI : MonoBehaviour
             EndGamePanel.alpha = 1;
 
             //update highscores
-            UpdateHighScorePanel();
+            string highscoreFlourish = UpdateHighScorePanel() ? "" : "*";
 
             //set information on end screen
             int[] playerInfo = PlayerInformation.GetPlayerInformation();
 
-            TotalEndGameText.text = string.Format("<size=16>Total Score: {0}</size>\noOo\n<size=12> Total Donuts Eaten: {1}\nLeft Lemming: {2}\nRight Lemming: {3}\noOo\nTotal Time Bonuses: {4}\nTotal Collectables: {5}</size>",
-                playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5]);
+            TotalEndGameText.text = string.Format("<size=20>Total Score: {0}</size>\noOo\n<size=12> Total Donuts Eaten: {1}\nLeft Lemming: {2}\nRight Lemming: {3}\noOo\nTotal Time Bonuses: {4}\nTotal Collectables: {5}</size>",
+                playerInfo[0] + highscoreFlourish, playerInfo[1], playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5]);
         }
     }
 
@@ -162,7 +164,7 @@ public class EndGameUI : MonoBehaviour
             PlayerPrefs.GetInt("Score9", 0).ToString("0000"), PlayerPrefs.GetString("Date9", "N/A"));
     }
 
-    private void UpdateHighScorePanel()
+    private bool UpdateHighScorePanel()
     {
         //get current player info
         int[] playerInfo = PlayerInformation.GetPlayerInformation();
@@ -183,6 +185,7 @@ public class EndGameUI : MonoBehaviour
 
         //sort highscore table by score, big -> small
         highscoreTable = highscoreTable.OrderBy(w => w.First).Reverse().ToList();
+        highscoreTable.RemoveAt(10);
 
         //save top six scores
         PlayerPrefs.SetInt("Score0", highscoreTable[0].First);
@@ -210,6 +213,8 @@ public class EndGameUI : MonoBehaviour
 
         //save highscore table
         PlayerPrefs.Save();
+
+        return highscoreTable.Contains(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.k_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
     }
 
     public void OpenPauseMenu()
