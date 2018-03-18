@@ -30,12 +30,7 @@ public class EndGameUI : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-
-            MainScreenPanel.GetComponent<Animator>().SetBool("fadedOut", true);
-
-            MainScreenPanel.interactable = false;
-            MainScreenPanel.blocksRaycasts = false;
-            MainScreenPanel.alpha = 0;
+            Destroy(MainScreenPanel.gameObject);
         }
 
         Application.runInBackground = true;
