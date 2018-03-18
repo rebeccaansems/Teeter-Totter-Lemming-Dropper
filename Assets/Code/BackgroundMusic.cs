@@ -27,7 +27,7 @@ public class BackgroundMusic : MonoBehaviour
 
     void Start()
     {
-        currSong = Random.Range(0, MusicClips.Length + 1);
+        currSong = Random.Range(0, MusicClips.Length);
         aud = GetComponent<AudioSource>();
 
         if (!aud.isPlaying)
@@ -46,7 +46,7 @@ public class BackgroundMusic : MonoBehaviour
     IEnumerator PlayBackgroundMusic()
     {
         yield return new WaitForSeconds(aud.clip.length);
-        currSong = Random.Range(0, MusicClips.Length + 1);
+        currSong = Random.Range(0, MusicClips.Length);
         aud.clip = MusicClips[currSong];
         aud.Play();
         PlayBackgroundMusic();
