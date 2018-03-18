@@ -28,6 +28,7 @@ public class LemmingScoring : MonoBehaviour
             //knock out lemming and remove colliders
             collision.transform.GetComponent<BirdMovement>().KillBird();
             StartCoroutine(this.GetComponent<LemmingMovement>().KnockOut());
+            this.GetComponent<PlayAudio>().PlayRandom(8, 10);
         }
     }
 }
