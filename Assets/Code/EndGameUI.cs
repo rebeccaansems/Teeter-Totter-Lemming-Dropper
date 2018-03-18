@@ -81,7 +81,7 @@ public class EndGameUI : MonoBehaviour
             EndGamePanel.alpha = 1;
 
             //update highscores
-            string highscoreFlourish = UpdateHighScorePanel() ? "" : "*";
+            string highscoreFlourish = UpdateHighScorePanel() ? "*" : "";
 
             //set information on end screen
             int[] playerInfo = PlayerInformation.GetPlayerInformation();
@@ -120,7 +120,6 @@ public class EndGameUI : MonoBehaviour
         PausedPanel.alpha = 0;
 
         prevPanel = panel;
-
         SetupHighScorePanel();
     }
 
@@ -152,12 +151,13 @@ public class EndGameUI : MonoBehaviour
     private void SetupHighScorePanel()
     {
         //put updated highscore information into text
-        HighscoreText.text = string.Format("{1}: {0}\n{3}: {2}\n{5}: {4}\n{7}: {6}\n{9}: {8}\n{11}: {10}\n{13}: {12}\n{15}: {14}\n{17}: {16}",
+        HighscoreText.text = string.Format("{1}: {0}\n{3}: {2}\n{5}: {4}\n{7}: {6}\n{9}: {8}\n{11}: {10}\n{13}: {12}\n{15}: {14}\n{17}: {16}\n{19}: {18}",
             PlayerPrefs.GetInt("Score0", 0).ToString("0000"), PlayerPrefs.GetString("Date0", "N/A"),
             PlayerPrefs.GetInt("Score1", 0).ToString("0000"), PlayerPrefs.GetString("Date1", "N/A"),
             PlayerPrefs.GetInt("Score2", 0).ToString("0000"), PlayerPrefs.GetString("Date2", "N/A"),
             PlayerPrefs.GetInt("Score3", 0).ToString("0000"), PlayerPrefs.GetString("Date3", "N/A"),
             PlayerPrefs.GetInt("Score4", 0).ToString("0000"), PlayerPrefs.GetString("Date4", "N/A"),
+            PlayerPrefs.GetInt("Score5", 0).ToString("0000"), PlayerPrefs.GetString("Date5", "N/A"),
             PlayerPrefs.GetInt("Score6", 0).ToString("0000"), PlayerPrefs.GetString("Date6", "N/A"),
             PlayerPrefs.GetInt("Score7", 0).ToString("0000"), PlayerPrefs.GetString("Date7", "N/A"),
             PlayerPrefs.GetInt("Score8", 0).ToString("0000"), PlayerPrefs.GetString("Date8", "N/A"),
@@ -181,10 +181,12 @@ public class EndGameUI : MonoBehaviour
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score7", 0), PlayerPrefs.GetString("Date7", "N/A")));
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score8", 0), PlayerPrefs.GetString("Date8", "N/A")));
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score9", 0), PlayerPrefs.GetString("Date9", "N/A")));
-        highscoreTable.Add(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.s_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
+
+        Tuple<int, string> currGame = new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.s_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy"));
+        highscoreTable.Add(currGame);
 
         //sort highscore table by score, big -> small
-        highscoreTable = highscoreTable.OrderBy(w => w.First).Reverse().ToList();
+        highscoreTable = highscoreTable.OrderByDescending(w => w.First).ThenByDescending(y => y.Second).ToList();
         highscoreTable.RemoveAt(10);
 
         //save top six scores
@@ -214,7 +216,7 @@ public class EndGameUI : MonoBehaviour
         //save highscore table
         PlayerPrefs.Save();
 
-        return highscoreTable.Contains(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.s_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
+        return highscoreTable.Contains(currGame);
     }
 
     public void OpenPauseMenu()
