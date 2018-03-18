@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int k_GamesPlayed = 0, k_GamesPlayedThisSession = 0;
-    public static float k_SFXVolume, k_MusicVolume;
+    public static int s_GamesPlayed = 0, s_GamesPlayedThisSession = 0;
+    public static float s_SFXVolume, s_MusicVolume;
 
     public EndGameUI EndGame;
     public Image BonusImage;
@@ -26,15 +26,15 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        k_GamesPlayed = PlayerPrefs.GetInt("GamesPlayed", 0);
+        s_GamesPlayed = PlayerPrefs.GetInt("GamesPlayed", 0);
 
-        k_SFXVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
-        k_MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        s_SFXVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
+        s_MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
 
-        SfxSlider.value = k_SFXVolume;
-        MusicSlider.value = k_MusicVolume;
+        SfxSlider.value = s_SFXVolume;
+        MusicSlider.value = s_MusicVolume;
 
-        if (k_GamesPlayedThisSession == 0)
+        if (s_GamesPlayedThisSession == 0)
         {
             TimerLength += 3;
         }
@@ -184,13 +184,13 @@ public class PlayerStats : MonoBehaviour
 
     public void SetSFXVolume()
     {
-        k_SFXVolume = SfxSlider.value;
-        PlayerPrefs.SetFloat("SfxVolume", k_SFXVolume);
+        s_SFXVolume = SfxSlider.value;
+        PlayerPrefs.SetFloat("SfxVolume", s_SFXVolume);
     }
 
     public void SetMusicVolume()
     {
-        k_MusicVolume = MusicSlider.value;
-        PlayerPrefs.SetFloat("MusicVolume", k_MusicVolume);
+        s_MusicVolume = MusicSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", s_MusicVolume);
     }
 }

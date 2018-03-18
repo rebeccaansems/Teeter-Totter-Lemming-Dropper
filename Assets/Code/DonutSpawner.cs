@@ -19,7 +19,7 @@ public class DonutSpawner : MonoBehaviour
     //Spawn donuts and collectables
     IEnumerator Spawn()
     {
-        if (PlayerStats.k_GamesPlayedThisSession == 0)
+        if (PlayerStats.s_GamesPlayedThisSession == 0)
         {
             yield return new WaitForSeconds(3);
         }

@@ -18,7 +18,7 @@ public class EndGameUI : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerStats.k_GamesPlayedThisSession == 0)
+        if (PlayerStats.s_GamesPlayedThisSession == 0)
         {
             Time.timeScale = 0;
             PlayerInformation.TouchEnabled = false;
@@ -68,9 +68,9 @@ public class EndGameUI : MonoBehaviour
         if (PlayerInformation.TimerLength < 0 && Time.timeScale != 0)
         {
             //Increase number of games played
-            PlayerStats.k_GamesPlayed++;
-            PlayerStats.k_GamesPlayedThisSession++;
-            PlayerPrefs.SetInt("GamesPlayed", PlayerStats.k_GamesPlayed);
+            PlayerStats.s_GamesPlayed++;
+            PlayerStats.s_GamesPlayedThisSession++;
+            PlayerPrefs.SetInt("GamesPlayed", PlayerStats.s_GamesPlayed);
 
             //stop time
             Time.timeScale = 0;
@@ -93,7 +93,7 @@ public class EndGameUI : MonoBehaviour
 
     public void ResetLevel()
     {
-        if (PlayerStats.k_GamesPlayedThisSession % 3 == 0 && Advertisement.IsReady())
+        if (PlayerStats.s_GamesPlayedThisSession % 3 == 0 && Advertisement.IsReady())
         {
             Advertisement.Show();
         }
@@ -181,7 +181,7 @@ public class EndGameUI : MonoBehaviour
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score7", 0), PlayerPrefs.GetString("Date7", "N/A")));
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score8", 0), PlayerPrefs.GetString("Date8", "N/A")));
         highscoreTable.Add(new Tuple<int, string>(PlayerPrefs.GetInt("Score9", 0), PlayerPrefs.GetString("Date9", "N/A")));
-        highscoreTable.Add(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.k_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
+        highscoreTable.Add(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.s_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
 
         //sort highscore table by score, big -> small
         highscoreTable = highscoreTable.OrderBy(w => w.First).Reverse().ToList();
@@ -214,7 +214,7 @@ public class EndGameUI : MonoBehaviour
         //save highscore table
         PlayerPrefs.Save();
 
-        return highscoreTable.Contains(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.k_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
+        return highscoreTable.Contains(new Tuple<int, string>(playerInfo[0], "Game " + PlayerStats.s_GamesPlayed + ": " + DateTime.Now.ToString("dd-MM-yy")));
     }
 
     public void OpenPauseMenu()
