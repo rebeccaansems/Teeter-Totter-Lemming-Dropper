@@ -369,6 +369,11 @@ public class EndGameUI : MonoBehaviour
             this.GetComponent<PlayAudio>().Play();
         }
     }
+
+    private void OnApplicationPause(bool pause)
+    {
+        OpenPauseMenu();
+    }
 }
 
 public class Tuple<T1, T2>
