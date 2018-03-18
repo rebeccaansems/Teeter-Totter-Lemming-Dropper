@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  EndX: 3.5
+  EndX: 5
   DirectionMultiplier: 0
 --- !u!114 &114585666536823138
 MonoBehaviour:

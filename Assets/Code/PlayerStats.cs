@@ -7,14 +7,14 @@ public class PlayerStats : MonoBehaviour
     public static int s_GamesPlayed = 0, s_GamesPlayedThisSession = 0;
     public static float s_SFXVolume, s_MusicVolume;
 
-    public EndGameUI EndGame;
-    public Image BonusImage;
-    public Text InfoText, BonusText;
+    public EndGameUI[] EndGame;
+    public Image[] BonusImage;
+    public Text[] InfoText, BonusText;
     public Image[] Collectables;
     public Sprite[] GatheredCollectables;
-    public Animator BonusTextAnimator;
+    public Animator[] BonusTextAnimator;
     public Sprite EmptySprite;
-    public Slider SfxSlider, MusicSlider;
+    public Slider[] SfxSlider, MusicSlider;
 
     public float TimerLength;
     public bool TouchEnabled = true;
@@ -31,8 +31,8 @@ public class PlayerStats : MonoBehaviour
         s_SFXVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
         s_MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
 
-        SfxSlider.value = s_SFXVolume;
-        MusicSlider.value = s_MusicVolume;
+        SfxSlider[(int)DeviceSelector.DEVICE].value = s_SFXVolume;
+        MusicSlider[(int)DeviceSelector.DEVICE].value = s_MusicVolume;
 
         if (s_GamesPlayedThisSession == 0)
         {
@@ -58,12 +58,12 @@ public class PlayerStats : MonoBehaviour
             rightLemmingDonutsEaten++;
         }
         //display updated score
-        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
+        InfoText[(int)DeviceSelector.DEVICE].text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //make bonus appear
-        BonusImage.sprite = donutImage;
-        BonusText.text = "+" + score + " pts";
-        BonusTextAnimator.SetBool("fadeIn", true);
+        BonusImage[(int)DeviceSelector.DEVICE].sprite = donutImage;
+        BonusText[(int)DeviceSelector.DEVICE].text = "+" + score + " pts";
+        BonusTextAnimator[(int)DeviceSelector.DEVICE].SetBool("fadeIn", true);
 
         if (bonus != null)
         {
@@ -75,7 +75,7 @@ public class PlayerStats : MonoBehaviour
     IEnumerator ShowBonusText()
     {
         yield return new WaitForSeconds(3);
-        BonusTextAnimator.SetBool("fadeIn", false);
+        BonusTextAnimator[(int)DeviceSelector.DEVICE].SetBool("fadeIn", false);
     }
 
     //Increase time and collectables eaten
@@ -85,18 +85,18 @@ public class PlayerStats : MonoBehaviour
         playerScore += score;
         totalCollectables++;
         //goldify the correct icon in the top panel
-        Collectables[collect].sprite = GatheredCollectables[collect];
+        Collectables[collect * ((int)DeviceSelector.DEVICE + 1)].sprite = GatheredCollectables[collect * ((int)DeviceSelector.DEVICE + 1)];
 
         //show updated score
-        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
+        InfoText[(int)DeviceSelector.DEVICE].text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //increase total time remaining  by 10 seconds
         AddTime(10);
 
         //make bonus appear
-        BonusImage.sprite = collectImage;
-        BonusText.text = "+" + score + " pts +10 secs";
-        BonusTextAnimator.SetBool("fadeIn", true);
+        BonusImage[(int)DeviceSelector.DEVICE].sprite = collectImage;
+        BonusText[(int)DeviceSelector.DEVICE].text = "+" + score + " pts +10 secs";
+        BonusTextAnimator[(int)DeviceSelector.DEVICE].SetBool("fadeIn", true);
 
         if (bonus != null)
         {
@@ -112,12 +112,12 @@ public class PlayerStats : MonoBehaviour
             //double total score
             playerScore = playerScore * 2;
             //show updated score
-            InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
+            InfoText[(int)DeviceSelector.DEVICE].text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
             //make bonus appear
-            BonusImage.sprite = EmptySprite;
-            BonusText.text = "BONUS! Score x2";
-            BonusTextAnimator.SetBool("fadeIn", true);
+            BonusImage[(int)DeviceSelector.DEVICE].sprite = EmptySprite;
+            BonusText[(int)DeviceSelector.DEVICE].text = "BONUS! Score x2";
+            BonusTextAnimator[(int)DeviceSelector.DEVICE].SetBool("fadeIn", true);
 
             if (bonus != null)
             {
@@ -137,7 +137,7 @@ public class PlayerStats : MonoBehaviour
             for (int i = 0; i < GatheredCollectables.Length; i++)
             {
                 //collectable has not been gathered
-                if (Collectables[i].sprite != GatheredCollectables[i])
+                if (Collectables[i * ((int)DeviceSelector.DEVICE + 1)].sprite != GatheredCollectables[i * ((int)DeviceSelector.DEVICE + 1)])
                 {
                     return false;
                 }
@@ -161,7 +161,7 @@ public class PlayerStats : MonoBehaviour
         //remove time for remaining time
         TimerLength -= Time.deltaTime;
         //update text with how much is remaining
-        InfoText.text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
+        InfoText[(int)DeviceSelector.DEVICE].text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
 
         //if less than 0 seconds in game
         if (TimerLength < 0)
@@ -173,7 +173,7 @@ public class PlayerStats : MonoBehaviour
     //What to do once the timer is up
     private void TimerUp()
     {
-        EndGame.MakeEndGameVisible();
+        EndGame[(int)DeviceSelector.DEVICE].MakeEndGameVisible();
     }
 
     //get array of players information
@@ -184,13 +184,13 @@ public class PlayerStats : MonoBehaviour
 
     public void SetSFXVolume()
     {
-        s_SFXVolume = SfxSlider.value;
+        s_SFXVolume = SfxSlider[(int)DeviceSelector.DEVICE].value;
         PlayerPrefs.SetFloat("SfxVolume", s_SFXVolume);
     }
 
     public void SetMusicVolume()
     {
-        s_MusicVolume = MusicSlider.value;
+        s_MusicVolume = MusicSlider[(int)DeviceSelector.DEVICE].value;
         PlayerPrefs.SetFloat("MusicVolume", s_MusicVolume);
     }
 }
