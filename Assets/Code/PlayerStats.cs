@@ -85,7 +85,9 @@ public class PlayerStats : MonoBehaviour
         playerScore += score;
         totalCollectables++;
         //goldify the correct icon in the top panel
-        Collectables[collect * ((int)DeviceSelector.DEVICE + 1)].sprite = GatheredCollectables[collect * ((int)DeviceSelector.DEVICE + 1)];
+        int num = collect + (DeviceSelector.DEVICE == DeviceSelector.DeviceType.Phone ? 0 : 4);
+        Collectables[collect + (DeviceSelector.DEVICE == DeviceSelector.DeviceType.Phone ? 0 : 4)].sprite =
+            GatheredCollectables[collect + (DeviceSelector.DEVICE == DeviceSelector.DeviceType.Phone ? 0 : 4)];
 
         //show updated score
         InfoText[(int)DeviceSelector.DEVICE].text = string.Format("Score: {0}\nSeconds Left: {1}", playerScore.ToString("00000"), TimerLength.ToString("000"));
@@ -134,10 +136,11 @@ public class PlayerStats : MonoBehaviour
         if (fullCollectAwarded == false)
         {
             //loop through all collectables
-            for (int i = 0; i < GatheredCollectables.Length; i++)
+            for (int i = 0; i < GatheredCollectables.Length / 2; i++)
             {
                 //collectable has not been gathered
-                if (Collectables[i * ((int)DeviceSelector.DEVICE + 1)].sprite != GatheredCollectables[i * ((int)DeviceSelector.DEVICE + 1)])
+                if (Collectables[i + (DeviceSelector.DEVICE == DeviceSelector.DeviceType.Phone ? 0 : 4)].sprite
+                    != GatheredCollectables[i + (DeviceSelector.DEVICE == DeviceSelector.DeviceType.Phone ? 0 : 4)])
                 {
                     return false;
                 }
